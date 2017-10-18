@@ -1,0 +1,14 @@
+HangOutExact
+As being teenagers, our team know that it is sometimes hard to organize a good hangout plan for a group such as
+finding attractive places, what to play, where to eat, or even just stay at home.
+First, one will initialize a plan by giving us some general information, then our system 
+will provide users suggested places based on the data given for the
+users to choose. After that, their friends will join in the group and everyone can have a chat
+together to change the place or quit the group. And the plan will terminate if no one join anymore.
+Moreover, weather also contributes a signicant role in a plan, the application will consequently
+suggest an alternative plan to changing from playing soccer to board game if the weather is bad for example.
+Therefore, our team find its necessary to propose an idea of an application to help users find a best strategy to
+follow their hangout plan. 
+
+Potential Users: teenagers
+
