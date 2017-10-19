@@ -10,7 +10,9 @@ suggest an alternative plan to changing from playing soccer to board game if the
 Therefore, our team find its necessary to propose an idea of an application to help users find a best strategy to
 follow their hangout plan. 
 
-Potential Users: teenagers
+Potential Users: teenagers, mobile phone users (android device)
+
+Environment: android
 
 Key features:
  1) Create and store a list of locations
@@ -35,4 +37,3 @@ Key features:
  (choose a place - pick on map, pick from progress, pick from plan, etc., find direction from current position)
  11) find direction 2
  (instead of finding direction from current position, let user choose position twice)
-
