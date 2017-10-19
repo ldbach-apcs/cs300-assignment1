@@ -12,3 +12,27 @@ follow their hangout plan.
 
 Potential Users: teenagers
 
+Key features:
+ 1) Create and store a list of locations
+ (used to represent a 'hangout')
+ 2) search hangout
+ (accordance with criteria given by the users, e.g: including eat, drink; or indoor only, suitable for 5 people, etc.)
+ 3) Weather forecast (using APIs)
+ (for example hangout is planned at 3pm, but it would be raining at 3, so application will raise a warning at time of planning
+ it also display suggestion, e.g: it would stop raining at 5pm, do you want to move the schedule)?
+ 4) community usage of the application
+ (suggestion, filter, share, adapt other hangout to make it your own)
+ 5) group planning
+ (invite friends to a hangout, people are able to see plan, comment on places, suggest changing place, etc.)
+ 6) personal review and comment on place
+ 7) hangout history for further reference
+ 8) hangout creation
+ (suggest activity and location)
+ 9) hangout progress
+ (throughout the hangout, use gps to get curent location of the user, whenever they reach a destination,
+ automatically marked as "visitted")
+ 10) find direction
+ (choose a place - pick on map, pick from progress, pick from plan, etc., find direction from current position)
+ 11) find direction 2
+ (instead of finding direction from current position, let user choose position twice)
+
