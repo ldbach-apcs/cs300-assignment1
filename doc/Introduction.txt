@@ -32,8 +32,10 @@ Key features:
  (suggest activity and location)
  9) hangout progress
  (throughout the hangout, use gps to get curent location of the user, whenever they reach a destination,
- automatically marked as "visitted")
+ automatically marked as "visited")
  10) find direction
  (choose a place - pick on map, pick from progress, pick from plan, etc., find direction from current position)
  11) find direction 2
  (instead of finding direction from current position, let user choose position twice)
+ 12) share plans on facebook
+ (plans and comments of users can be shared on facebook)
