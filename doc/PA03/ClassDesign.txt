@@ -1,0 +1,113 @@
+class Sound()
+{
+	int volume;
+	AdjustSound();
+} 
+abstract class Mission()
+{
+	bool isMissionComplete;
+	abstract getCurrency();
+	abstract getAffectionPoint();
+	abstract doMission();
+	String details;	
+}
+class visitPosition() extends Mission()
+{
+	float lat, lng;
+	doMission();
+	getCurrency();
+	getAffectionPoint();
+}
+class WalkACertainDistance() extends Mission()
+{
+	int distance;
+	doMission();
+	getCurrency();
+	getAffectionPoint();
+}
+class InviteFriend() extends Mission()
+{
+	int count;
+	doMission();
+	getCurrency();
+	getAffectionPoint();
+}
+
+abstract class Achievement()
+{
+	string details;
+	AchievementCompleted();
+}
+class WalkingSociety: public Achievment()
+{
+	int countFriendInvited;
+	AchievementCompleted();
+}
+class DiligentWalker: public Achievement
+{
+	static public float distance;
+	AchievementCompleted();
+}
+class QuestSpecialist: public Achievement
+{
+	static public int countQuests;
+	AchievementCompleted();
+}
+class RelentlessExplorer: public Achievement
+{
+	static public int countPosititon;
+	AchievementCompleted();
+}
+class DevotedOwner: public Achievement
+{
+	static public int countFeedTimes;
+	AchievementCompleted();
+}
+class MillionareWalker: public Achievement
+{
+	static public int countStep;
+	AchievementCompleted();
+}
+class WalkingAroundTheWorld: public Achievement
+{
+	static public float distance;
+	AchievementCompleted();
+}
+class FirstStepToTheMoon: public Achievement
+{
+	static public float distance;
+	AchievementCompleted();
+}
+class Level
+{
+	int curLevel;
+	int curAffectionPoint;
+	getCurLevel();
+	getCurAffectionPoint();
+	LevelUp();
+}
+class Pet
+{
+	GameObject Dog;
+	WagTail();
+	ChangePetSkin();
+}
+class Shop
+{
+	Milk milk;
+	Bone bone;
+	Buy();
+	
+}
+class Milk()
+{
+	Image milk;
+	int price;
+	int affectionPoint;
+}
+class Bone()
+{
+	Image milk;
+	int price;
+	int affectionPoint;
+}
