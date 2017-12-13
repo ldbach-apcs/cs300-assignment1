@@ -1,0 +1,21 @@
+﻿<Properties RefactoringSettings.EnableRefactorings="True" StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\QuestInput\IQuestInput.cs">
+    <Files>
+      <File FileName="Assets\Pedometer\Example\StepCounter.cs" Line="26" Column="77" />
+      <File FileName="Assets\Scripts\QuestInput\IQuestInput.cs" Line="13" Column="29" />
+      <File FileName="Assets\Scripts\QuestInput\IQuestObserver.cs" Line="5" Column="34" />
+    </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State name="__root__">
+          <Node name="Dog and Jog" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
