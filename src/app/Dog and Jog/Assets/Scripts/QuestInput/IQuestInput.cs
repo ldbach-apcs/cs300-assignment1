@@ -14,11 +14,11 @@ public abstract class IQuestInput
 		}
 	}
 
-	protected void Notify() 
+	protected void Notify(QuestInputData data) 
 	{
 		foreach (IQuestObserver observer in observers) 
 		{
-			observer.OnQuestInput();	
+			observer.OnQuestInput(data);	
 		}
 	}
 }

@@ -58,9 +58,14 @@
      <Compile Include="Assets\Pedometer\Plugins\Managed\Platforms\PedometerGPS.cs" />
      <Compile Include="Assets\Pedometer\Plugins\Managed\Platforms\PedometeriOS.cs" />
      <Compile Include="Assets\Pedometer\Plugins\Managed\Utilities\PedometerHelper.cs" />
+     <Compile Include="Assets\Scripts\Quest\DistanceQuest.cs" />
+     <Compile Include="Assets\Scripts\Quest\IQuest.cs" />
+     <Compile Include="Assets\Scripts\Quest\QuestFactory.cs" />
+     <Compile Include="Assets\Scripts\Quest\QuestManager.cs" />
      <Compile Include="Assets\Scripts\QuestInput\DistanceQuestInput.cs" />
      <Compile Include="Assets\Scripts\QuestInput\IQuestInput.cs" />
      <Compile Include="Assets\Scripts\QuestInput\IQuestObserver.cs" />
+     <Compile Include="Assets\Scripts\QuestInput\QuestInputData.cs" />
      <None Include="Assets\Pedometer\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

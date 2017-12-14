@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IQuestObserver {
-	void OnQuestInput();
+	void OnQuestInput(QuestInputData data);
 }

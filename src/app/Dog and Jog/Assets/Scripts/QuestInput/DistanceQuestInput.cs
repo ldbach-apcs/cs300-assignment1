@@ -10,7 +10,10 @@ public class DistanceQuestInput : IQuestInput {
     // the start of session, we load distance of previous
     // sessions
     private float prevDistance = 0;
-    private string PREV_DISTANCE = "previous_distance";
+    public static string PREV_DISTANCE = "previous_distance";
+
+	// This String is for passing QuestInputData
+	public static string INPUT_DISTANCE = "input_distance";
 
     private PedometerU.Pedometer pedometer;
     
@@ -29,7 +32,9 @@ public class DistanceQuestInput : IQuestInput {
     private void OnStep(int steps, double distance)
     {
         totalDistance = distance + prevDistance;
-        Notify();
+		var data = new QuestInputData (INPUT_DISTANCE); 
+		data.PutValue (distance);
+        Notify(data);
     }
     
     public void Destroy()
