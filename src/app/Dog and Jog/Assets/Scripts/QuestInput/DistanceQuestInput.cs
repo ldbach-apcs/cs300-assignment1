@@ -42,5 +42,8 @@ public class DistanceQuestInput : IQuestInput {
         // Close and clean up the pedometer
         pedometer.Dispose();
         pedometer = null;
+
+		// save the current step state
+		PlayerPrefs.SetFloat(PREV_DISTANCE, (float) totalDistance);
     }
 }

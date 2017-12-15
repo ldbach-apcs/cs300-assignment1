@@ -12,13 +12,17 @@ public sealed class QuestFactory {
 		return instance;
 	}
 
-	public static IQuest GetQuest()
+
+	/*
+	 * This function returns a random quest
+	 */ 
+	public IQuest GetQuest()
 	{
 		// Future overloading: add level or affection point
 		// to create scaling  quest
 
 		// For now, return a new distance quest
-		return new DistanceQuest("First quest", "Run for your life", 200);
+		return new DistanceQuest("First quest", "Run for your life", Random.Range(35.0f, 50.0f));
 	}
 
 

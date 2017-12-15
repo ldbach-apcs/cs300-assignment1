@@ -9,12 +9,19 @@ public class DistanceQuest : IQuest {
     private double disStart;
 	private bool isDone = false;
 
-    public DistanceQuest(string name, string description, 
-        double disRequire) : base(name, description)
+    public DistanceQuest
+		(string name, string description, double disRequire) : base(name, description)
     {
         this.disRequire = disRequire;
 		this.disStart = PlayerPrefs.GetFloat (DistanceQuestInput.PREV_DISTANCE, 0);
     }
+
+	public DistanceQuest
+		(string name, string description, double disRequire, double disStart): base(name, description)
+	{
+		this.disRequire = disRequire;
+		this.disStart = disStart;
+	}
 
 	public override void Update(QuestInputData data)
 	{
@@ -27,4 +34,17 @@ public class DistanceQuest : IQuest {
     {
 		return isDone;
     }
+
+	public override void Save()
+	{
+		PlayerPrefs.SetString ("test_name", name);
+		PlayerPrefs.SetString ("test_des", description);
+		PlayerPrefs.SetFloat ("test_req", (float) disRequire);
+		PlayerPrefs.SetFloat ("test_start", (float) disStart);
+	}
+
+	public override string ToString()
+	{
+		return name + " " + description + " " + disRequire.ToString();
+	}
 }

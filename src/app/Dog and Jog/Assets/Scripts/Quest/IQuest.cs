@@ -15,4 +15,5 @@ public abstract class IQuest {
 
 	public abstract void Update(QuestInputData data);
     public abstract bool IsFinish();
+	public abstract void Save ();
 }
