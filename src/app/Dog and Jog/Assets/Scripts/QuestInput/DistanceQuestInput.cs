@@ -17,11 +17,19 @@ public class DistanceQuestInput : IQuestInput {
 
     private PedometerU.Pedometer pedometer;
     
-    public DistanceQuestInput()
-    {
-        prevDistance = PlayerPrefs.GetFloat(PREV_DISTANCE, 0f);
-        pedometer = new PedometerU.Pedometer(OnStep);
-    }
+	public DistanceQuestInput()
+	{
+		prevDistance = PlayerPrefs.GetFloat (PREV_DISTANCE, 0f);
+		pedometer = new PedometerU.Pedometer (OnStep);
+
+		// Register (observer);
+		// Init ();
+	}
+
+	public void Init()
+	{
+		OnStep(0, 0);
+	}
 
     /*
      * This function is used to handle Pedometer reading
@@ -33,7 +41,7 @@ public class DistanceQuestInput : IQuestInput {
     {
         totalDistance = distance + prevDistance;
 		var data = new QuestInputData (INPUT_DISTANCE); 
-		data.PutValue (distance);
+		data.PutValue (totalDistance);
         Notify(data);
     }
     

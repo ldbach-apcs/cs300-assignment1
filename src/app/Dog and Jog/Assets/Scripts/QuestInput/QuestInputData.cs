@@ -16,7 +16,7 @@ public class QuestInputData
 
 	public double GetValue(string query)
 	{
-		return valueMap.ContainsKey(query) ? valueMap [query] : 0;
+		return valueMap.ContainsKey(query) ? valueMap[query] : 0;
 	}
 
 	public void PutValue(double val) 

@@ -8,9 +8,9 @@ public abstract class IQuestInput
 
 	public void Register(IQuestObserver observer) 
 	{
-		if (!observers.Contains (observer)) 
+		if (!observers.Contains(observer)) 
 		{
-			observers.Add (observer);
+			observers.Add(observer);
 		}
 	}
 

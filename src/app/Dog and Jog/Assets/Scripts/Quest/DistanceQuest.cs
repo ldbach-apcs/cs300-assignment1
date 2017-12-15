@@ -7,20 +7,21 @@ public class DistanceQuest : IQuest {
     private double disRequire;
     // Record current distance statistic when quest created
     private double disStart;
+	private double disTotal;
 	private bool isDone = false;
 
     public DistanceQuest
 		(string name, string description, double disRequire) : base(name, description)
     {
         this.disRequire = disRequire;
-		this.disStart = PlayerPrefs.GetFloat (DistanceQuestInput.PREV_DISTANCE, 0);
+		this.disTotal = this.disStart = PlayerPrefs.GetFloat (DistanceQuestInput.PREV_DISTANCE, 0);
     }
 
 	public DistanceQuest
 		(string name, string description, double disRequire, double disStart): base(name, description)
 	{
 		this.disRequire = disRequire;
-		this.disStart = disStart;
+		this.disTotal = this.disStart = disStart;
 	}
 
 	public override void Update(QuestInputData data)
@@ -28,6 +29,8 @@ public class DistanceQuest : IQuest {
 		double totalDistance = data.GetValue (DistanceQuestInput.INPUT_DISTANCE);
 		if (totalDistance - disStart >= disRequire)
 			isDone = true;
+
+		disTotal = totalDistance;
     }
 	
     public override bool IsFinish()
@@ -45,6 +48,6 @@ public class DistanceQuest : IQuest {
 
 	public override string ToString()
 	{
-		return name + " " + description + " " + disRequire.ToString();
+		return "Quest name: " + name + ", Distance remaining: " + (disStart + disRequire - disTotal).ToString() + " meters";
 	}
 }

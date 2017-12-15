@@ -18,6 +18,8 @@ public class QuestManager {
 	public void UpdateQuest(QuestInputData data)
     {
 		currentQuest.Update (data);
+
+
     }
 
     public void FinishQuest()
