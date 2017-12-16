@@ -45,7 +45,7 @@ MonoBehaviour:
   m_MinSize: {x: 102, y: 242}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 27
+  controlID: 54
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 110
+  controlID: 88
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,8 +139,8 @@ MonoBehaviour:
     y: 0
     width: 390
     height: 325
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 613, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 149
+  controlID: 53
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 348
     height: 645
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -343,18 +343,18 @@ MonoBehaviour:
       y: 17
       width: 626
       height: 388
-    m_Scale: {x: 1, y: 0.99111485}
-    m_Translation: {x: 313, y: 194}
+    m_Scale: {x: 0.5222939, y: 0.5222939}
+    m_Translation: {x: 313, y: 193.054}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -313
-      y: -195.73917
-      width: 626
-      height: 391.47833
+      x: -599.2794
+      y: -369.62714
+      width: 1198.5588
+      height: 742.8767
     m_MinimalGUI: 1
   m_defaultScale: 0.5052083
   m_TargetTexture: {fileID: 0}
@@ -471,20 +471,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scripts/Quest
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Scripts/Quest
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Duy-Bach\Desktop\Git\cs300-assignment1\src\app\Dog and
     Jog
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 46280000
-    m_LastClickedID: 10310
-    m_ExpandedIDs: 00000000142800004628000000ca9a3bffffff7f
+    m_SelectedIDs: 56270000
+    m_LastClickedID: 10070
+    m_ExpandedIDs: 00000000502700008227000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -512,7 +512,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001428000046280000
+    m_ExpandedIDs: 000000005027000082270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: f26900008e190000ae0000004c1e0000800100005e1f0000802300007e220000401e00002e000000b2250000ee0400000a020000ce270000680300006a030000a2040000cc0f0100a8030000e277ffff140d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -630,7 +630,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0035ffffd435ffff0037ffffa43effff703fffffa240ffff62fbffff00000000
+    m_ExpandedIDs: 36f5ffff06f6ffff32f7ffffa6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

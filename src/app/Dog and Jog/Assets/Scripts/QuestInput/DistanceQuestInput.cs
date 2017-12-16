@@ -21,9 +21,6 @@ public class DistanceQuestInput : IQuestInput {
 	{
 		prevDistance = PlayerPrefs.GetFloat (PREV_DISTANCE, 0f);
 		pedometer = new PedometerU.Pedometer (OnStep);
-
-		// Register (observer);
-		// Init ();
 	}
 
 	public void Init()

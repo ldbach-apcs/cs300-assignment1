@@ -22,7 +22,7 @@ public sealed class QuestFactory {
 		// to create scaling  quest
 
 		// For now, return a new distance quest
-		return new DistanceQuest("First quest", "Run for your life", Random.Range(35.0f, 50.0f));
+		return new DistanceQuest("First quest", "Run for your life", 100.0f);
 	}
 
 
