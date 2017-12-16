@@ -53,6 +53,7 @@ public class QuestManager {
 		currentQuest.Save ();
 	}
 
+	// Load Quest will be changed when adding Database Component
 	private IQuest LoadQuest()
 	{
 		string title = PlayerPrefs.GetString ("test_name", null);
@@ -60,7 +61,7 @@ public class QuestManager {
 		float disReq = PlayerPrefs.GetFloat ("test_req", -1);
 		float disStart = PlayerPrefs.GetFloat ("test_start", -1);
 
-		if (title == null)
+		if (disReq == -1 || disStart == -1)
 			return null;
 		return new DistanceQuest (title, description, disReq, disStart);
 	}
