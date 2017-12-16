@@ -15,10 +15,12 @@ public class TestController : MonoBehaviour, IQuestObserver {
 		// Load input device
 		questInput = new DistanceQuestInput();
 		questInput.Register(observer: this);
-		questInput.Init();
 
 		// Init quest manager
 		questManager = new QuestManager();
+
+		// Init textUI with starter data
+		questInput.Init();
 	}
 
 //	void Update()
@@ -52,8 +54,8 @@ public class TestController : MonoBehaviour, IQuestObserver {
 		} else {
 			questInput = new DistanceQuestInput();
 			questInput.Register (this);
-			questInput.Init ();
 			questManager = new QuestManager();
+			questInput.Init ();			
 		}
 	}
 }
