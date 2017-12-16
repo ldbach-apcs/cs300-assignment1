@@ -135,4 +135,4 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 997989bd398a551bd8800e6486ae328b Assembly-CSharp.dll:PedometerU.Tests.StepCounter
-1dd1431589764d3b4237cb6615603ecb Assembly-CSharp.dll:.TestController
+793c121f893c40524031702ed2f7e794 Assembly-CSharp.dll:.TestController

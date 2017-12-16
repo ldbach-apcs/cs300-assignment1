@@ -22,7 +22,7 @@ public sealed class QuestFactory {
 		// to create scaling  quest
 
 		// For now, return a new distance quest
-		return new DistanceQuest("First quest", "Run for your life", 100.0f);
+		return new DistanceQuest("Let's run away", "Run for your life", 500.0f);
 	}
 
 

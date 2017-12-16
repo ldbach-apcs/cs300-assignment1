@@ -14,7 +14,9 @@ public class DistanceQuest : IQuest {
 		(string name, string description, double disRequire) : base(name, description)
     {
         this.disRequire = disRequire;
-		this.disTotal = this.disStart = PlayerPrefs.GetFloat (DistanceQuestInput.PREV_DISTANCE, 0);
+		this.disStart = PlayerPrefs.GetFloat (DistanceQuestInput.PREV_DISTANCE, 0);
+		this.disTotal = this.disStart;
+		this.action = "Run " + disRequire.ToString() + " meters";
     }
 
 	public DistanceQuest
@@ -44,6 +46,12 @@ public class DistanceQuest : IQuest {
 		PlayerPrefs.SetString ("test_des", description);
 		PlayerPrefs.SetFloat ("test_req", (float) disRequire);
 		PlayerPrefs.SetFloat ("test_start", (float) disStart);
+	}
+
+	public override string GetProgress() 
+	{
+
+		return "Distance remaining: " + (disStart + disRequire - disTotal).ToString() + " meters";
 	}
 
 	public override string ToString()

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TestController : MonoBehaviour, IQuestObserver {
 
-	public Text quest, distance, reward;
+	public Text quest, distance, remaining;
 
 	private DistanceQuestInput questInput;
 	private QuestManager questManager;
@@ -33,14 +33,13 @@ public class TestController : MonoBehaviour, IQuestObserver {
 		questManager.UpdateQuest(data);
 
 		// This is only for testing*
-		quest.text = questManager.GetQuest().ToString();
-		distance.text = (data.GetValue (DistanceQuestInput.INPUT_DISTANCE)).ToString();
+		IQuest curQuest = questManager.GetQuest();
+		quest.text = curQuest.name;
+		int inputDistance = (int) data.GetValue (DistanceQuestInput.INPUT_DISTANCE);
+		distance.text = inputDistance.ToString();
 
-		if (questManager.QuestIsFinish()) {
-			reward.text = "Rewarded!";
-		} else {
-			reward.text = "";
-		}
+		// remaining
+		remaining.text = curQuest.GetProgress();
 	}
 
 	public void OnApplicationPause(bool pauseStatus)
