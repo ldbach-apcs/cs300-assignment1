@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TestController : MonoBehaviour, IQuestObserver {
-
+public class TestController : MonoBehaviour {//, IQuestObserver {
+/* 
 	public Text quest, distance, remaining;
 
 	private DistanceQuestInput questInput;
 	private QuestManager questManager;
+
 
 	void Start()
 	{
@@ -57,4 +58,5 @@ public class TestController : MonoBehaviour, IQuestObserver {
 			questInput.Init ();			
 		}
 	}
+	*/
 }
