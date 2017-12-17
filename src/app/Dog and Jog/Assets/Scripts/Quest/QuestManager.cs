@@ -29,6 +29,7 @@ public class QuestManager {
 			// Claim Reward
 
 			// Geneerate new Quest
+			currentQuest = QuestFactory.Instance().GetQuest();
 		}
     }
 

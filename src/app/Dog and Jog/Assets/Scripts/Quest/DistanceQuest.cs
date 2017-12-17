@@ -50,12 +50,9 @@ public class DistanceQuest : IQuest {
 
 	public override string GetProgress() 
 	{
-
-		return "Distance remaining: " + (disStart + disRequire - disTotal).ToString() + " meters";
-	}
-
-	public override string ToString()
-	{
-		return "Quest name: " + name + ", Distance remaining: " + (disStart + disRequire - disTotal).ToString() + " meters";
+		int remainingDis = (int) (disStart + disRequire - disTotal);
+		if (remainingDis > 0)
+			return "Distance remaining: " + remainingDis.ToString() + " meters";
+		else return "Desire fulfilled";
 	}
 }
