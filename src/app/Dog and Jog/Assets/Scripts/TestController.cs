@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
 public class TestController : MonoBehaviour {//, IQuestObserver {
-/* 
+
 	public Text quest, distance, remaining;
 
-	private DistanceQuestInput questInput;
+	private IQuestInput questInput;
 	private QuestManager questManager;
-
+	private IQuestInput facebookQuestInput;
 
 	void Start()
 	{
@@ -17,11 +17,13 @@ public class TestController : MonoBehaviour {//, IQuestObserver {
 		questInput = new DistanceQuestInput();
 		questInput.Register(observer: this);
 
+		facebookQuestInput = new FacebookQuestInput ();
+		facebookQuestInput.Register (observer: this);
 		// Init quest manager
 		questManager = new QuestManager();
 
 		// Init textUI with starter data
-		questInput.Init();
+		// questInput.Init();
 	}
 
 //	void Update()
@@ -47,7 +49,7 @@ public class TestController : MonoBehaviour {//, IQuestObserver {
 	{
 		if (pauseStatus) {
 			// Clean up input device
-			questInput.Destroy ();
+			questInput.Destroy();
 			questInput = null;
 			questManager.SaveQuest ();
 			questManager = null;
@@ -58,5 +60,6 @@ public class TestController : MonoBehaviour {//, IQuestObserver {
 			questInput.Init ();			
 		}
 	}
-	*/
+
 }
+*/

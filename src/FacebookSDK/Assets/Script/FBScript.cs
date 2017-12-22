@@ -10,12 +10,22 @@ public class FBScript : MonoBehaviour {
 	public GameObject DialogLoggedOut;// log out
 	public GameObject DialogUsername;
 	public GameObject DialogProfilePic;
+	public  GameObject DialogMission;
 	// Use this for initialization
 	void Awake () {
 		FacebookManager.Instance.InitFB();
 		DealWithFBMenu (FB.IsLoggedIn);
 	}
+	private static FBScript Instance = null;
+	public static FBScript getInstance()
+	{
+		if (Instance == null) {
+			Instance = (FBScript)FindObjectOfType (typeof(FBScript));
 
+		}
+		return Instance;
+
+	}
 
 	public void FBLogin()
 	{
@@ -36,6 +46,7 @@ public class FBScript : MonoBehaviour {
 		} 
 		else 
 		{
+			
 			if (FB.IsLoggedIn) {// when logged in successfully
 				FacebookManager.Instance.isLoggedIn = true;
 				FacebookManager.Instance.getProfile ();
@@ -92,7 +103,9 @@ public class FBScript : MonoBehaviour {
 	public void Share()
 	{
 		FacebookManager.Instance.Share ();
+	
 	}
+
 	public void Invite()
 	{
 		FacebookManager.Instance.Invite ();	

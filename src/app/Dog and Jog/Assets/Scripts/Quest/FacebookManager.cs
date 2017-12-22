@@ -24,6 +24,7 @@ public class FacebookManager : MonoBehaviour {
 	public string ProfileName {get;set;}//some properties of get; set;
 	public Sprite ProfilePic {get;set;}
 	public string AppLinkUrl { get; set;}
+	public bool isShared;
 	void Awake()
 	{
 		DontDestroyOnLoad (this.gameObject);//does not destroy when moving to other scences)/change scence still avaiable
@@ -37,6 +38,7 @@ public class FacebookManager : MonoBehaviour {
 		} else {
 			isLoggedIn = FB.IsLoggedIn; //updating facebook status
 		}
+		isShared = false;
 	}
 
 	private void OnHideUnity(bool isGameShown)
@@ -108,21 +110,14 @@ public class FacebookManager : MonoBehaviour {
 		if (AppLinkUrl == null) {
 			AppLinkUrl = "http://n3k.ca/";
 		}
-		/*	FB.FeedShare (String.Empty,
-			new Uri(AppLinkUrl),//applink
-			"D&J is f*cking awesome!",//caption
-			"This is my pet. It is f*cking cute, right?",//title
-			"Guys! Check this game!",//description
-			new Uri("http://cdn.akc.org/Marketplace/Breeds/Pembroke_Welsh_Corgi_SERP.jpg"), //Url for an image. or potentially put a screenshot in there
-			String.Empty, // this one is for audio/video
-			ShareCallBack
-		);*/
+	
 		FB.ShareLink(new Uri(AppLinkUrl),
 			"This is my pet. It is f*cking cute, right?",
 			"Guys! Check this game!",
 			new Uri("http://cdn.akc.org/Marketplace/Breeds/Pembroke_Welsh_Corgi_SERP.jpg"),
 			ShareCallBack);
 	}
+
 
 	void ShareCallBack (IShareResult result)
 	{
@@ -133,50 +128,14 @@ public class FacebookManager : MonoBehaviour {
 			Debug.Log ("Errors on share!");	
 		}
 		else if (!String.IsNullOrEmpty (result.RawResult)) {
-			Debug.Log ("Success on Share!");
+			isShared = true;
+			Text mission = FBScript.getInstance().DialogMission.GetComponent<Text> ();
+			mission.text = "Share time: 1/1";
+			Debug.Log ("Success on Share!" + isShared.ToString());
 		}
 
 	}
-	public void Invite()
-	{
-		FB.Mobile.AppInvite(new Uri(AppLinkUrl),// app link
-			new Uri("http://cdn.akc.org/Marketplace/Breeds/Pembroke_Welsh_Corgi_SERP.jpg"),//image
-			InviteCallBack);
-	}
 
-	void InviteCallBack (IAppInviteResult result)
-	{
-		if (result.Cancelled) {
-			Debug.Log ("Invite canceled");
-		} else if (!String.IsNullOrEmpty (result.Error)) {
-			Debug.Log ("Errors on invite!");	
-		}
-		else if (!String.IsNullOrEmpty (result.RawResult)) {
-			Debug.Log ("Success on invite!");
-		}
-	}
-	//share when alr your friends have this app.
-	public void ShareWithUsers()//no testers appear 
-	{
-		FB.AppRequest ("Walk with me together, my friend",//message
-			null,
-			//list of appusers
-			new List<object>(){"app_users"},//target app user
-			null,// max recipients
-			null,
-			null,
-			null,
-			ShareWithUsersCallback);
-	}
-	void ShareWithUsersCallback(IAppRequestResult result)//invite who alr have our app
-	{
-		if (result.Cancelled) {
-			Debug.Log ("Request canceled");
-		} else if (!String.IsNullOrEmpty (result.Error)) {
-			Debug.Log ("Errors on request!");	
-		}
-		else if (!String.IsNullOrEmpty (result.RawResult)) {
-			Debug.Log ("Success on request!");
-		}
-	}
+
+
 }

@@ -8,7 +8,9 @@ using System;
 public class FacebookManager : MonoBehaviour {
 	//a singleton for facebook Manager
 	//backend
+
 	private static FacebookManager _instance;
+	
 	public static FacebookManager Instance
 	{
 		get{
@@ -20,6 +22,7 @@ public class FacebookManager : MonoBehaviour {
 			return _instance;
 		}
 	}
+	public bool isShared;
 	public bool isLoggedIn{ get; set;}// get set the variable can only be used in a function
 	public string ProfileName {get;set;}//some properties of get; set;
 	public Sprite ProfilePic {get;set;}
@@ -37,6 +40,7 @@ public class FacebookManager : MonoBehaviour {
 		} else {
 			isLoggedIn = FB.IsLoggedIn; //updating facebook status
 		}
+		isShared = false;
 	}
 
 	private void OnHideUnity(bool isGameShown)
@@ -133,7 +137,10 @@ public class FacebookManager : MonoBehaviour {
 			Debug.Log ("Errors on share!");	
 		}
 		else if (!String.IsNullOrEmpty (result.RawResult)) {
-			Debug.Log ("Success on Share!");
+			isShared = true;
+			Text mission = FBScript.getInstance().DialogMission.GetComponent<Text> ();
+			mission.text = "Share time: 1/1";
+			Debug.Log ("Success on Share!" + isShared.ToString());
 		}
 
 	}
