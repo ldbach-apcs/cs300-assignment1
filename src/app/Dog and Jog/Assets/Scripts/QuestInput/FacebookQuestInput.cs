@@ -5,28 +5,30 @@ using UnityEngine;
 public class FacebookQuestInput :  IQuestInput {
 
 
-	private bool isShare = false;
-	public static string SHARE_STATUS = "share_status";
+	public static string PREV_SHARE = "prev_share";
 	public static string INPUT_SHARE = "input_share";
+
+	private int prevShare = 0;
+	private int totalShare = 0;
 
 
 	public FacebookQuestInput()
 	{
-		isShare = PlayerPrefs2.GetBool (SHARE_STATUS);
+		prevShare = PlayerPrefs.GetInt(PREV_SHARE, 0);
+		totalShare = prevShare;
 	}
 
 	/*
      * This function is used to handle share reading
-    
      */
-	public void OnShare(bool share) 
+	public void OnShare(bool shareSucessful) 
 	{
-		isShare = share;
-		var data = new QuestInputData (INPUT_SHARE); 
-		if (isShare)
-			data.PutValue(1);
-		else 
-			data.PutValue(0);
+		totalShare += shareSucessful? 1 : 0;
+		// Save share progress
+		PlayerPrefs.SetInt(PREV_SHARE, totalShare);
+
+		var data = new QuestInputData(INPUT_SHARE);
+		data.PutValue(totalShare);
 		Notify(data);
 	}
 
@@ -36,7 +38,7 @@ public class FacebookQuestInput :  IQuestInput {
 
 	public void Destroy()
 	{
-		// save the current step state
-		PlayerPrefs2.SetBool(SHARE_STATUS, isShare);
+		// save the current share number
+		PlayerPrefs.SetInt(PREV_SHARE, totalShare);
 	}
 }

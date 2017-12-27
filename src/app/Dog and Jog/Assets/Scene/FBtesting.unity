@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quest: {fileID: 587346861}
-  total: {fileID: 0}
+  total: {fileID: 41201367}
   remaining: {fileID: 466692115}
 --- !u!4 &1158080711
 Transform:

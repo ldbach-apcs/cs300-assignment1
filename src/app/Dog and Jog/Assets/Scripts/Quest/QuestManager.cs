@@ -18,17 +18,17 @@ public class QuestManager {
 	public void UpdateQuest(QuestInputData data)
     {
 		currentQuest.Update (data);
-
-
+		FinishQuest();
     }
 
-    public void FinishQuest()
+    private void FinishQuest()
     {
 		if (currentQuest.IsFinish ()) 
 		{
 			// Claim Reward
 
 			// Geneerate new Quest
+			currentQuest = null;
 			currentQuest = QuestFactory.Instance().GetQuest();
 		}
     }

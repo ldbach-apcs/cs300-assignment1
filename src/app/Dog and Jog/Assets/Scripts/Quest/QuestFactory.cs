@@ -32,8 +32,9 @@ public sealed class QuestFactory {
 			+ ", please walk him there", 200.0f);
 		*/
 
-		return new FacebookQuest("Let's make some friend", "Your pet is lonely", false);
+
+		// Get current share number
+		int currentShare = PlayerPrefs.GetInt(FacebookQuestInput.PREV_SHARE);
+		return new FacebookQuest("Let's make some friend", "Your pet is lonely", currentShare, 3);
 	}
-
-
 }

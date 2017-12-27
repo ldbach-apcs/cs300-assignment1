@@ -23,7 +23,7 @@ public class DistanceQuestInput : IQuestInput {
 		pedometer = new PedometerU.Pedometer (OnStep);
 	}
 
-	public void Init()
+	override public void Init()
 	{
 		OnStep(0, 0);
 	}
@@ -40,6 +40,9 @@ public class DistanceQuestInput : IQuestInput {
 		var data = new QuestInputData (INPUT_DISTANCE); 
 		data.PutValue (totalDistance);
         Notify(data);
+        
+        // Save total distance
+        PlayerPrefs.SetFloat(PREV_DISTANCE, (float) totalDistance);
     }
     
     public void Destroy()
