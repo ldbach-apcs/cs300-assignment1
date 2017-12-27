@@ -6,6 +6,10 @@ using UnityEngine.UI;
 using System;
 
 public class FacebookManager : MonoBehaviour {
+
+	private FacebookQuestInput facebookQuestInput;
+
+
 	//a singleton for facebook Manager
 	//backend
 	private static FacebookManager _instance;
@@ -123,19 +127,23 @@ public class FacebookManager : MonoBehaviour {
 	{
 		//check if is an error or success
 		if (result.Cancelled) {
+			facebookQuestInput.OnShare(false);
 			Debug.Log ("Share canceled");
 		} else if (!String.IsNullOrEmpty (result.Error)) {
 			Debug.Log ("Errors on share!");	
 		}
 		else if (!String.IsNullOrEmpty (result.RawResult)) {
 			isShared = true;
-			Text mission = FBScript.getInstance().DialogMission.GetComponent<Text> ();
-			mission.text = "Share time: 1/1";
-			Debug.Log ("Success on Share!" + isShared.ToString());
+			// Text mission = FBScript.getInstance().DialogMission.GetComponent<Text> ();
+			// mission.text = "Share time: 1/1";
+			// Debug.Log ("Success on Share!" + isShared.ToString());
+			facebookQuestInput.OnShare(isShared);
 		}
 
 	}
 
-
+	public void register(FacebookQuestInput input) {
+		this.facebookQuestInput = input;
+	}
 
 }

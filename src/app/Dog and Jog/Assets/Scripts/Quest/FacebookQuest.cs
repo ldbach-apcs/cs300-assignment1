@@ -6,6 +6,7 @@ public class FacebookQuest : IQuest {
 
 	private bool isShare;
 
+	private int curShareVal = 0;
 	private bool curShare;
 	private bool isDone = false;
 
@@ -20,9 +21,8 @@ public class FacebookQuest : IQuest {
 
 	public override void Update(QuestInputData data)
 	{
-		if (FacebookManager.Instance.isShared ==true)
-			isDone = true; 
-
+		isShare = ((int) data.GetValue(FacebookQuestInput.INPUT_SHARE) - curShareVal >= 1);
+		isDone = isShare; 
 	}
 
 	public override bool IsFinish()

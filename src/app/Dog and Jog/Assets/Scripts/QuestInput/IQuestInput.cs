@@ -21,4 +21,8 @@ public abstract class IQuestInput
 			observer.OnQuestInput(data);	
 		}
 	}
+
+	public virtual void Init() {
+
+	}
 }

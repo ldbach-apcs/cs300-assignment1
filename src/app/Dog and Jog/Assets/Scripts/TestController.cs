@@ -2,28 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-/*
-public class TestController : MonoBehaviour {//, IQuestObserver {
 
-	public Text quest, distance, remaining;
+public class TestController : MonoBehaviour , IQuestObserver {
 
-	private IQuestInput questInput;
+	public Text quest, total, remaining;
+
+	// private IQuestInput questInput;
 	private QuestManager questManager;
 	private IQuestInput facebookQuestInput;
 
 	void Start()
 	{
+		// Reset PlayerPref for testing
+		PlayerPrefs.DeleteAll();
+
 		// Load input device
-		questInput = new DistanceQuestInput();
-		questInput.Register(observer: this);
+		// questInput = new DistanceQuestInput();
+		// questInput.Register(observer: this);
 
 		facebookQuestInput = new FacebookQuestInput ();
 		facebookQuestInput.Register (observer: this);
+
+		FacebookManager.Instance.register((FacebookQuestInput) facebookQuestInput);
 		// Init quest manager
 		questManager = new QuestManager();
 
 		// Init textUI with starter data
-		// questInput.Init();
+		facebookQuestInput.Init();
 	}
 
 //	void Update()
@@ -38,8 +43,11 @@ public class TestController : MonoBehaviour {//, IQuestObserver {
 		// This is only for testing*
 		IQuest curQuest = questManager.GetQuest();
 		quest.text = curQuest.name;
-		int inputDistance = (int) data.GetValue (DistanceQuestInput.INPUT_DISTANCE);
-		distance.text = inputDistance.ToString();
+		// int inputDistance = (int) data.GetValue (DistanceQuestInput.INPUT_DISTANCE);
+		// distance.text = inputDistance.ToString();
+
+		int curShare = (int) data.GetValue(FacebookQuestInput.INPUT_SHARE);
+		total.text = curShare.ToString();
 
 		// remaining
 		remaining.text = curQuest.GetProgress();
@@ -47,19 +55,5 @@ public class TestController : MonoBehaviour {//, IQuestObserver {
 
 	public void OnApplicationPause(bool pauseStatus)
 	{
-		if (pauseStatus) {
-			// Clean up input device
-			questInput.Destroy();
-			questInput = null;
-			questManager.SaveQuest ();
-			questManager = null;
-		} else {
-			questInput = new DistanceQuestInput();
-			questInput.Register (this);
-			questManager = new QuestManager();
-			questInput.Init ();			
-		}
 	}
-
 }
-*/

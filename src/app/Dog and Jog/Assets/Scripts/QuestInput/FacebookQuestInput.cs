@@ -19,11 +19,19 @@ public class FacebookQuestInput :  IQuestInput {
      * This function is used to handle share reading
     
      */
-	private void OnShare(bool share) 
+	public void OnShare(bool share) 
 	{
 		isShare = share;
 		var data = new QuestInputData (INPUT_SHARE); 
+		if (isShare)
+			data.PutValue(1);
+		else 
+			data.PutValue(0);
 		Notify(data);
+	}
+
+	override public void Init() {
+		OnShare(false);
 	}
 
 	public void Destroy()
