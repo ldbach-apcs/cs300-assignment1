@@ -100,15 +100,12 @@ public class FacebookManager : MonoBehaviour {
 		if (!String.IsNullOrEmpty (result.Url)) {
 			AppLinkUrl = result.Url;
 		} else {
-			AppLinkUrl = "http://n3k.ca/";
+			AppLinkUrl = "http://google.com";
 		}
 	}
-	public void Share() // no longer support caption description or title
+	public void Share()
 	{
-		if (AppLinkUrl == null) {
-			AppLinkUrl = "http://n3k.ca/";
-		}
-	/*	FB.FeedShare (String.Empty,
+		FB.FeedShare (String.Empty,
 			new Uri(AppLinkUrl),//applink
 			"D&J is f*cking awesome!",//caption
 			"This is my pet. It is f*cking cute, right?",//title
@@ -116,12 +113,7 @@ public class FacebookManager : MonoBehaviour {
 			new Uri("http://cdn.akc.org/Marketplace/Breeds/Pembroke_Welsh_Corgi_SERP.jpg"), //Url for an image. or potentially put a screenshot in there
 			String.Empty, // this one is for audio/video
 			ShareCallBack
-		);*/
-		FB.ShareLink(new Uri(AppLinkUrl),
-			"This is my pet. It is f*cking cute, right?",
-			"Guys! Check this game!",
-			new Uri("http://cdn.akc.org/Marketplace/Breeds/Pembroke_Welsh_Corgi_SERP.jpg"),
-			ShareCallBack);
+		);
 	}
 
 	void ShareCallBack (IShareResult result)
@@ -156,7 +148,7 @@ public class FacebookManager : MonoBehaviour {
 		}
 	}
 	//share when alr your friends have this app.
-	public void ShareWithUsers()//no testers appear 
+	public void ShareWithUsers()
 	{
 		FB.AppRequest ("Walk with me together, my friend",//message
 			null,

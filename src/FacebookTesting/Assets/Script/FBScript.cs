@@ -88,7 +88,6 @@ public class FBScript : MonoBehaviour {
 		DealWithFBMenu(FacebookManager.Instance.isLoggedIn);
 	}
 	// Share when acheive an achievement or something.
-
 	public void Share()
 	{
 		FacebookManager.Instance.Share ();

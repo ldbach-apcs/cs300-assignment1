@@ -63,10 +63,10 @@
      <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\GraphRequest.cs" />
      <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\MainMenu.cs" />
      <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\Pay.cs" />
+     <Compile Include="Assets\OpenShop.cs" />
      <Compile Include="Assets\Script\FacebookManager.cs" />
      <Compile Include="Assets\Script\FBScript.cs" />
      <Compile Include="Assets\Script\openSceneScript\Buttons\Open_Scene_Button.cs" />
-     <Compile Include="Assets\Script\OpenShop.cs" />
      <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver.txt" />
      <None Include="Assets\FacebookSDK\link.xml" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
