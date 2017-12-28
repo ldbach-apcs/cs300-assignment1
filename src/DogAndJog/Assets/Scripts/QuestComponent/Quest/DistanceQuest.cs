@@ -11,7 +11,7 @@ public class DistanceQuest : IQuest {
 	private bool isDone = false;
 
     public DistanceQuest
-		(string name, string description, double disRequire) : base(name, description)
+		(string name, string description, double disRequire, int rewardExp, int rewardMoney) : base(name, description, rewardExp, rewardMoney)
     {
         this.disRequire = disRequire;
 		this.disStart = PlayerPrefs.GetFloat (DistanceQuestInput.PREV_DISTANCE, 0);
@@ -20,7 +20,7 @@ public class DistanceQuest : IQuest {
     }
 
 	public DistanceQuest
-		(string name, string description, double disRequire, double disStart): base(name, description)
+		(string name, string description, double disRequire, double disStart, int rewardExp, int rewardMoney): base(name, description, rewardExp, rewardMoney)
 	{
 		this.disRequire = disRequire;
 		this.disTotal = this.disStart = disStart;

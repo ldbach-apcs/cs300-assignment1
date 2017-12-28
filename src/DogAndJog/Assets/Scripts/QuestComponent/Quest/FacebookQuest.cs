@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class FacebookQuest : IQuest {
 
-	private int shareStart;
-	private int shareRequire;
+	
 	private int shareTotal;
 	private bool isDone = false;
 
 	public FacebookQuest
-	(string name, string description, int shareStart, int shareRequire) : base(name, description)
+	(string name, string description, int shareStart, int shareRequire, int rewardExp, int rewardMoney) : base(name, description, rewardExp, rewardMoney)
 	{
 		isDone = false;
-		this.shareRequire = shareRequire;
-		this.shareStart = shareStart;
-		shareTotal = shareStart;
+		requireValue = shareRequire;
+		prevValue = shareStart;
+		shareTotal = (int) prevValue;
+		action = "Share";
 	}
 
 
 	public override void Update(QuestInputData data)
 	{
 		shareTotal = (int) data.GetValue(FacebookQuestInput.INPUT_SHARE);
-		isDone = (shareStart + shareRequire <= shareTotal);
+		isDone = (prevValue + requireValue <= shareTotal);
 
 
-		Debug.Log(shareStart.ToString() + " " + shareTotal.ToString());
+		// Debug.Log(shareStart.ToString() + " " + shareTotal.ToString());
 	}
 
 	public override bool IsFinish()
@@ -41,8 +41,12 @@ public class FacebookQuest : IQuest {
 
 	public override string GetProgress() 
 	{
-		int remainingShare = shareTotal - shareStart;
-		if (isDone) return "Shared: " + shareRequire.ToString() + " / " + shareRequire.ToString();
-		else return "Shared: " + remainingShare.ToString() + " / " + shareRequire.ToString();
+		int remainingShare = shareTotal - (int) prevValue;
+		if (isDone) return "Shared: " + ((int) requireValue).ToString() + " / " + ((int) requireValue).ToString();
+		else return "Shared: " + remainingShare.ToString() + " / " + ((int) requireValue).ToString();
+	}
+
+	public override string ToString() {
+		return action + " " + 	((int) requireValue).ToString() + " times";
 	}
 }

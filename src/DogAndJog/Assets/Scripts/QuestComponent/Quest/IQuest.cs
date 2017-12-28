@@ -5,13 +5,20 @@ using UnityEngine;
 public abstract class IQuest {
     public string name { get; set; }
     public string description { get; set; }
-    public string action {get; set; } // specify the action needed to complete quest like Run 10 meters
+    protected string action {get; set; } // specify the action needed to complete quest like Run 10 meters
     // public GameData reward { get; }
 
-    public IQuest(string name, string description)
+    public int rewardExp { get; set;}
+    public int rewardMoney {get; set;}
+    public double prevValue {get; set;}
+    public double requireValue {get; set;}
+
+    public IQuest(string name, string description, int rewardExp, int rewardMoney)
     {
         this.name = name;
         this.description = description;
+        this.rewardExp = rewardExp;
+        this.rewardMoney = rewardMoney;
     }
 
     public abstract string GetProgress();

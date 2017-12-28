@@ -5,47 +5,51 @@ using Mono.Data.Sqlite;
 using System.Data;
 using System;
 
-public class DatabaseReader : MonoBehaviour {
+public class DatabaseReader {
 
-	// Use this for initialization
-	void Start () {
-        string conn = "URI=file:" + Application.dataPath + "/Scripts/Database/database.db"; //Path to database.
-        IDbConnection dbconn;
-        dbconn = (IDbConnection)new SqliteConnection(conn);
-        dbconn.Open(); //Open connection to the database.
-        
-        
+    private static readonly DatabaseReader instance = new DatabaseReader();
+	private DatabaseReader() {
+        connectionString = "URI=file:" + Application.dataPath + DATABASE_PATH;
+        dbConnection = (IDbConnection) new SqliteConnection(connectionString);
+     }
 
-        dbconn.Close();
-        dbconn = null;
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public static DatabaseReader Instance()
+	{
+		return instance;
 	}
 
-    void achivementReader(IDbConnection dbconn) {
-        IDbCommand dbcmd = dbconn.CreateCommand();
+    ~DatabaseReader() {
+        SaveData();
+        dbConnection.Dispose();
+        dbConnection = null;
+    }
+
+    public List<Achievement> ReadAchievements() {
+        dbConnection.Open();
+        IDbCommand dbcmd = dbConnection.CreateCommand();
         string sqlQuery = "SELECT * FROM Achievement";
         dbcmd.CommandText = sqlQuery;
         IDataReader reader = dbcmd.ExecuteReader();
 
+        List<Achievement> achievements = new List<Achievement>();
+
         while (reader.Read()) {
             /*example: https://answers.unity.com/questions/743400/database-sqlite-setup-for-unity.html */
+            var newAchievement = Achievement.Parse(reader);
         }
-
+        
         reader.Close();
         reader = null;
         dbcmd.Dispose();
         dbcmd = null;
+        dbConnection.Close();
 
-        return;
+        return achievements;
     }
 
-    void animationReader(IDbConnection dbconn)
+    void ReadAnimation()
     {
-        IDbCommand dbcmd = dbconn.CreateCommand();
+        IDbCommand dbcmd = dbConnection.CreateCommand();
         string sqlQuery = "SELECT * FROM Animation";
         dbcmd.CommandText = sqlQuery;
         IDataReader reader = dbcmd.ExecuteReader();
@@ -63,9 +67,9 @@ public class DatabaseReader : MonoBehaviour {
         return;
     }
 
-    void foodReader(IDbConnection dbconn)
+    void ReadFood()
     {
-        IDbCommand dbcmd = dbconn.CreateCommand();
+        IDbCommand dbcmd = dbConnection.CreateCommand();
         string sqlQuery = "SELECT * FROM Food";
         dbcmd.CommandText = sqlQuery;
         IDataReader reader = dbcmd.ExecuteReader();
@@ -83,10 +87,82 @@ public class DatabaseReader : MonoBehaviour {
         return;
     }
 
-    void missionReader(IDbConnection dbconn)
+    public IQuest ReadQuest()
     {
-        IDbCommand dbcmd = dbconn.CreateCommand();
+        // if (dbConnection.State == ConnectionState.Closed)
+            dbConnection.Open();
+        
+        IDbCommand dbcmd = dbConnection.CreateCommand();
         string sqlQuery = "SELECT * FROM  Mission";
+        dbcmd.CommandText = sqlQuery;
+        IDataReader reader = dbcmd.ExecuteReader();
+
+        IQuest currentQuest = null;
+
+        if (reader.Read()) {
+            currentQuest = QuestFactory.Instance().ParseQuest(reader);
+        }
+
+        reader.Close();
+        reader = null;
+        dbcmd.Dispose();
+        dbcmd = null;
+
+//        if (dbConnection.State == ConnectionState.Open)
+            dbConnection.Close();
+
+        if (currentQuest == null)
+            currentQuest = QuestFactory.Instance().GetQuest();
+        return currentQuest;
+    }
+    
+    public void SaveQuest(IQuest quest) {
+        
+        int type = -1;
+        if (quest is DistanceQuest)
+            type = 0;
+        else if (quest is FacebookQuest)
+            type = 1;
+
+        String name = quest.name.Replace("'", "''");
+        String description = quest.description.Replace("'", "''");
+        int rewardExp = quest.rewardExp;
+        int rewardMoney = quest.rewardMoney;
+        double prevValue = quest.prevValue;
+        double requireValue = quest.requireValue;
+
+        // if (dbConnection.State == ConnectionState.Closed)
+            dbConnection.Open();
+
+        string sqlQuery = 
+            " UPDATE Mission SET" +
+            " name = '" + name + "'," +
+            " description = '" + description +  "'," +
+            " type = " + type.ToString() + "," +
+            " rewardExp = " + rewardExp.ToString() + "," + 
+            " rewardMoney = " + rewardMoney.ToString() + "," +
+            " prevValue = " + prevValue.ToString() + "," +
+            " requireValue = " + requireValue.ToString();
+
+        Debug.Log(sqlQuery);
+
+        IDbCommand dbCmd = dbConnection.CreateCommand();
+        dbCmd.CommandText = sqlQuery;
+        dbCmd.ExecuteNonQuery();
+
+        dbCmd.Dispose();
+        dbCmd = null;
+
+        Debug.Log(type.ToString());
+        
+//        if (dbConnection.State == ConnectionState.Open)
+            dbConnection.Close();
+    }
+
+    void ReadSkin()
+    {
+        IDbCommand dbcmd = dbConnection.CreateCommand();
+        string sqlQuery = "SELECT * FROM Skin";
         dbcmd.CommandText = sqlQuery;
         IDataReader reader = dbcmd.ExecuteReader();
 
@@ -103,23 +179,21 @@ public class DatabaseReader : MonoBehaviour {
         return;
     }
 
-    void skinReader(IDbConnection dbconn)
-    {
-        IDbCommand dbcmd = dbconn.CreateCommand();
-        string sqlQuery = "SELECT * FROM Skin";
-        dbcmd.CommandText = sqlQuery;
-        IDataReader reader = dbcmd.ExecuteReader();
+    private void SaveData() {
 
-        while (reader.Read())
-        {
+    }
 
-        }
+    private string DATABASE_PATH = "/database.db";
+    private string connectionString;
+    private IDbConnection dbConnection;
 
-        reader.Close();
-        reader = null;
-        dbcmd.Dispose();
-        dbcmd = null;
+    private double totalDistance;
+    public double getTotalDistance() { 
+        return totalDistance;
+    }
 
-        return;
+    private int totalShare;
+    public int getTotalShare() {
+        return totalShare;
     }
 } 

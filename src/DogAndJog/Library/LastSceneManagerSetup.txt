@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/ShopScene/Shop.unity
+- path: Assets/DiaryScene/DiaryScene.unity
   isLoaded: 1
   isActive: 1

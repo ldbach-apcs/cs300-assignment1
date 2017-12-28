@@ -14,6 +14,7 @@ public class DogBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//GameObject.Find("DogMesh").GetComponent<Renderer>().materials[0].SetTexture("Base(RGB)",
 		emotions = new List<string>();
 		DisplayEmotion ();
 	}
