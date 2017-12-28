@@ -22,8 +22,11 @@ public class Scroll_Dynamic_Content : MonoBehaviour {
 
     GameObject NewUnit(int n)
     {
+        Vector3 newPos = Vector3.down * itemHeight * n;
         GameObject go = Instantiate(prefab, transform);
-        go.GetComponent<RectTransform>().position = Vector3.down * itemHeight * n;// + new Vector3(0, -transform.childCount * 140, 0);
+        go.transform.SetParent(transform);
+        go.GetComponent<RectTransform>().anchoredPosition = newPos + new Vector3(10,-10,0);
+        //  go.GetComponent<RectTransform>().transform.position = transform.position + Vector3.forward * itemHeight * n;// + new Vector3(0, -transform.childCount * 140, 0);
         string name = reader.GetString(0);
         string description = reader.GetString(1);
         int storeCost = reader.GetInt32(2);
@@ -69,8 +72,8 @@ public class Scroll_Dynamic_Content : MonoBehaviour {
         int n = 0;
         while (reader.Read())
         {
-            n++;
             NewUnit(n);
+            n++;
             /*string name = reader.GetString(0);
             string description = reader.GetString(1);
             int storeCost = reader.GetInt32(2);

@@ -14,6 +14,8 @@ public class StoreItemController : MonoBehaviour {
     {
         this.item = item;
         transform.GetChild(0).GetComponent<Text>().text = item.GetName();
+
+        transform.GetChild(1).GetComponent<Image>().sprite = Resources.Load("foodMeat") as Sprite;
         transform.GetChild(2).GetComponent<Text>().text = item.GetPrice().ToString();
         transform.GetChild(3).GetComponent<Text>().text = item.GetDescription();
     }
@@ -21,4 +23,9 @@ public class StoreItemController : MonoBehaviour {
 	public void OnClick () {
         
 	}
+
+    public void Update()
+    {
+        Debug.Log(transform.GetChild(0).GetComponent<Text>().text + " " + transform.position);
+    }
 }
