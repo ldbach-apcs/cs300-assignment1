@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SceneController.cs">
+    <Files>
+      <File FileName="Assets\Dog\AnimationControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Dog\Emotion.cs" Line="1" Column="1" />
+      <File FileName="Assets\DogBehavior.cs" Line="1" Column="1" />
+      <File FileName="Assets\BGMPlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets\UIController.cs" Line="25" Column="3" />
+      <File FileName="Assets\SceneController.cs" Line="41" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
