@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/DiaryScene/DiaryScene.unity
+- path: Assets/MainScene/Main.unity
   isLoaded: 1
   isActive: 1
