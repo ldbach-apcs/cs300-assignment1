@@ -20,10 +20,10 @@ public class Scroll_Dynamic_Content : MonoBehaviour {
         Rect rect = GetComponent<RectTransform>().rect;
     }
 
-    GameObject NewUnit()
+    GameObject NewUnit(int n)
     {
         GameObject go = Instantiate(prefab, transform);
-        go.GetComponent<RectTransform>().position = position + Vector3.down * itemHeight * (transform.childCount + 1);// + new Vector3(0, -transform.childCount * 140, 0);
+        go.GetComponent<RectTransform>().position = Vector3.down * itemHeight * n;// + new Vector3(0, -transform.childCount * 140, 0);
         string name = reader.GetString(0);
         string description = reader.GetString(1);
         int storeCost = reader.GetInt32(2);
@@ -66,9 +66,11 @@ public class Scroll_Dynamic_Content : MonoBehaviour {
         string sqlQuery = "SELECT name, description, storeCost FROM " + type;
         dbcmd.CommandText = sqlQuery;
         reader = dbcmd.ExecuteReader();
+        int n = 0;
         while (reader.Read())
         {
-            NewUnit();
+            n++;
+            NewUnit(n);
             /*string name = reader.GetString(0);
             string description = reader.GetString(1);
             int storeCost = reader.GetInt32(2);
