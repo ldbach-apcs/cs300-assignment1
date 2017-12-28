@@ -58,16 +58,27 @@
      <Compile Include="Assets\Pedometer\Plugins\Managed\Platforms\PedometerGPS.cs" />
      <Compile Include="Assets\Pedometer\Plugins\Managed\Platforms\PedometeriOS.cs" />
      <Compile Include="Assets\Pedometer\Plugins\Managed\Utilities\PedometerHelper.cs" />
+     <Compile Include="Assets\Scripts\ButtonEventController.cs" />
+     <Compile Include="Assets\Scripts\Database\DatabaseReader.cs" />
      <Compile Include="Assets\Scripts\Quest\AchievementManager.cs" />
      <Compile Include="Assets\Scripts\Quest\DistanceQuest.cs" />
+     <Compile Include="Assets\Scripts\Quest\FacebookManager.cs" />
+     <Compile Include="Assets\Scripts\Quest\FacebookQuest.cs" />
+     <Compile Include="Assets\Scripts\Quest\FBScript.cs" />
      <Compile Include="Assets\Scripts\Quest\IQuest.cs" />
      <Compile Include="Assets\Scripts\Quest\QuestFactory.cs" />
      <Compile Include="Assets\Scripts\Quest\QuestManager.cs" />
      <Compile Include="Assets\Scripts\QuestInput\DistanceQuestInput.cs" />
+     <Compile Include="Assets\Scripts\QuestInput\FacebookQuestInput.cs" />
      <Compile Include="Assets\Scripts\QuestInput\IQuestInput.cs" />
      <Compile Include="Assets\Scripts\QuestInput\IQuestObserver.cs" />
+     <Compile Include="Assets\Scripts\QuestInput\PlayerPrefs2.cs" />
      <Compile Include="Assets\Scripts\QuestInput\QuestInputData.cs" />
      <Compile Include="Assets\Scripts\TestController.cs" />
+     <Compile Include="Assets\UITest\DependencyInjector.cs" />
+     <Compile Include="Assets\UITest\UITest.cs" />
+     <None Include="Assets\FacebookSDK\link.xml" />
+     <None Include="Assets\UITest\README.txt" />
      <None Include="Assets\Pedometer\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -95,6 +106,24 @@
  </Reference>
  <Reference Include="UnityEngine.SpatialTracking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="Facebook.Unity">
+ <HintPath>C:/Users/Duy-Bach/Desktop/CS300/cs300-assignment1/src/app/Dog and Jog/Assets/FacebookSDK/Plugins/Facebook.Unity.dll</HintPath>
+ </Reference>
+ <Reference Include="Facebook.Unity.Gameroom">
+ <HintPath>C:/Users/Duy-Bach/Desktop/CS300/cs300-assignment1/src/app/Dog and Jog/Assets/FacebookSDK/Plugins/Gameroom/Facebook.Unity.Gameroom.dll</HintPath>
+ </Reference>
+ <Reference Include="FacebookNamedPipeClient">
+ <HintPath>C:/Users/Duy-Bach/Desktop/CS300/cs300-assignment1/src/app/Dog and Jog/Assets/FacebookSDK/Plugins/Gameroom/FacebookNamedPipeClient.dll</HintPath>
+ </Reference>
+ <Reference Include="Facebook.Unity.Settings">
+ <HintPath>C:/Users/Duy-Bach/Desktop/CS300/cs300-assignment1/src/app/Dog and Jog/Assets/FacebookSDK/Plugins/Settings/Facebook.Unity.Settings.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Data.Sqlite">
+ <HintPath>C:/Users/Duy-Bach/Desktop/CS300/cs300-assignment1/src/app/Dog and Jog/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Data">
+ <HintPath>C:/Users/Duy-Bach/Desktop/CS300/cs300-assignment1/src/app/Dog and Jog/Assets/Plugins/System.Data.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Users/Duy-Bach/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>

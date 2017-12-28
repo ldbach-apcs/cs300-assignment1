@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scene/DiaryScene.unity
+- path: Assets/Scene/FBtesting.unity
   isLoaded: 1
   isActive: 1
