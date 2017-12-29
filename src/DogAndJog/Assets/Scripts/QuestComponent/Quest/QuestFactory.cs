@@ -16,6 +16,7 @@ public sealed class QuestFactory {
 	}
 
 	public IQuest ParseQuest(System.Data.IDataReader reader) {
+		dbReader = DatabaseReader.Instance();
 		IQuest currentQuest = null;
 		
 		string name = reader.GetString(0);

@@ -32,21 +32,65 @@ public abstract class Item
     {
         return quantiable;
     }//If the item is countable or only care about avaiability.
+    public abstract string GetItemType();
 }
 
 public abstract class ItemQuantiable : Item
 {
-    short count; //For Quantiable Objects.
-    protected ItemQuantiable(string name, string description, int cost) : base(name, description, cost, true)
-    { }
+    int quantity; //For Quantiable Objects.
+    protected ItemQuantiable(string name, string description, int cost, int quantity) : base(name, description, cost, true)
+    {
+        this.quantity = quantity;
+    }
+    public override abstract string GetItemType();
 }
 public abstract class ItemNonQuantiable : Item
 {
     bool avaiability;
-    protected ItemNonQuantiable(string name, string description, int cost) : base(name, description, cost, false)
-    { }
+    protected ItemNonQuantiable(string name, string description, int cost, bool avaiability) : base(name, description, cost, false)
+    {
+        this.avaiability = avaiability;
+    }
     public void SetAvaiability(bool ava)
     {
         avaiability = ava;
+    }
+    public bool GetAvaiability()
+    {
+        return avaiability;
+    }
+    public override abstract string GetItemType();
+}
+
+public class MySkin : ItemNonQuantiable
+{
+    public MySkin(string name, string description, int cost, bool avaiability) : base(name, description, cost, avaiability)
+    { }
+    public override string GetItemType()
+    {
+        return "Skin";
+    }
+}
+
+public class MyFood : ItemQuantiable
+{
+    int power;
+    public MyFood(string name, string description, int cost, int quantity, int power) : base(name, description, cost, quantity)
+    {
+        this.power = power;
+    }
+    public override string GetItemType()
+    {
+        return "Food";
+    }
+}
+
+public class MyAnimation : ItemNonQuantiable
+{
+    public MyAnimation(string name, string description, int cost, bool avaiability) : base(name, description, cost, avaiability)
+    { }
+    public override string GetItemType()
+    {
+        return "Animation";
     }
 }
