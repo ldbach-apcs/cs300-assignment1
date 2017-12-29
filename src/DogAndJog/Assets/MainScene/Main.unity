@@ -1476,6 +1476,30 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -2.12
       objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 4b241b8022a586b40a07ecb5b00d4035, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.30719915
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 4b241b8022a586b40a07ecb5b00d4035, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.30719918
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 4b241b8022a586b40a07ecb5b00d4035, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6368898
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 4b241b8022a586b40a07ecb5b00d4035, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 4b241b8022a586b40a07ecb5b00d4035, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 51.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 4b241b8022a586b40a07ecb5b00d4035, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6368899
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b241b8022a586b40a07ecb5b00d4035, type: 3}
   m_IsPrefabParent: 0
@@ -2607,7 +2631,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 59bbda38cc092494489ccafd888b5e99, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7c598815368fc884b8ccffc7e55bbbd7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
