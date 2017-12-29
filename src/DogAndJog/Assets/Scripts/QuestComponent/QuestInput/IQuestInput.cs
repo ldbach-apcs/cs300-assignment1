@@ -25,4 +25,8 @@ public abstract class IQuestInput
 	public virtual void Init() {
 
 	}
+
+	public virtual void Destroy() {
+		
+	}
 }

@@ -45,7 +45,7 @@ public class DistanceQuestInput : IQuestInput {
         PlayerPrefs.SetFloat(PREV_DISTANCE, (float) totalDistance);
     }
     
-    public void Destroy()
+    public override void Destroy()
     {
         // Close and clean up the pedometer
         pedometer.Dispose();

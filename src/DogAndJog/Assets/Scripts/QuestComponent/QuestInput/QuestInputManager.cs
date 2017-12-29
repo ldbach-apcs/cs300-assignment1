@@ -20,6 +20,13 @@ public sealed class QuestInputManager {
 		return instance;
 	}
 
+    ~QuestInputManager() {
+        foreach (var input in inputs)
+        {
+            input.Destroy();
+        }
+    }
+
     public void Register(IQuestObserver observer) {
         foreach (var input in inputs)
         {
