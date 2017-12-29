@@ -31,8 +31,8 @@ public class Scroll_Dynamic_Content : MonoBehaviour {
         string description = reader.GetString(1);
         int storeCost = reader.GetInt32(2);
         Item item = null;
-        if (type.Equals("Food")) item = new MyFood(name, description, storeCost);
-        if (type.Equals("Skin")) item = new MySkin(name, description, storeCost);
+        if (type.Equals("Food")) item = new MyFood(name, description, storeCost, 0, 0);
+        if (type.Equals("Skin")) item = new MySkin(name, description, storeCost, false);
         go.GetComponent<StoreItemController>().SetItem(item);
         return go;
     }

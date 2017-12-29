@@ -23,7 +23,7 @@ public class Currency
     static Currency currency;
     Currency()
     {
-        gained = PlayerPrefs.GetInt("PetCurrency", 40000);
+        gained = PlayerPrefs.GetInt("PetCurrency", 2000);
         if (gained == 0) Update();
     }
 

@@ -23,9 +23,4 @@ public class StoreItemController : MonoBehaviour {
 	public void OnClick () {
         
 	}
-
-    public void Update()
-    {
-        Debug.Log(transform.GetChild(0).GetComponent<Text>().text + " " + transform.position);
-    }
 }
