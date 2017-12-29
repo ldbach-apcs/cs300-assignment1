@@ -14,7 +14,8 @@ public class FacebookQuestInput :  IQuestInput {
 
 	public FacebookQuestInput()
 	{
-		prevShare = PlayerPrefs.GetInt(PREV_SHARE, 0);
+		//prevShare = PlayerPrefs.GetInt(PREV_SHARE, 0);
+		prevShare = DatabaseReader.Instance().totalShare;
 		totalShare = prevShare;
 	}
 
@@ -36,9 +37,9 @@ public class FacebookQuestInput :  IQuestInput {
 		OnShare(false);
 	}
 
-	public void Destroy()
+	public override void Destroy()
 	{
 		// save the current share number
-		PlayerPrefs.SetInt(PREV_SHARE, totalShare);
+		// PlayerPrefs.SetInt(PREV_SHARE, totalShare);
 	}
 }
