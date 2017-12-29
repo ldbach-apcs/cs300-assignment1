@@ -19,7 +19,8 @@ public class DistanceQuestInput : IQuestInput {
     
 	public DistanceQuestInput()
 	{
-		prevDistance = PlayerPrefs.GetFloat (PREV_DISTANCE, 0f);
+		// prevDistance = PlayerPrefs.GetFloat (PREV_DISTANCE, 0f);
+        prevDistance = (float) DatabaseReader.Instance().totalDistance;
 		pedometer = new PedometerU.Pedometer (OnStep);
 	}
 
@@ -42,7 +43,7 @@ public class DistanceQuestInput : IQuestInput {
         Notify(data);
         
         // Save total distance
-        PlayerPrefs.SetFloat(PREV_DISTANCE, (float) totalDistance);
+        // PlayerPrefs.SetFloat(PREV_DISTANCE, (float) totalDistance);
     }
     
     public override void Destroy()
@@ -52,6 +53,6 @@ public class DistanceQuestInput : IQuestInput {
         pedometer = null;
 
 		// save the current step state
-		PlayerPrefs.SetFloat(PREV_DISTANCE, (float) totalDistance);
+		// PlayerPrefs.SetFloat(PREV_DISTANCE, (float) totalDistance);
     }
 }
