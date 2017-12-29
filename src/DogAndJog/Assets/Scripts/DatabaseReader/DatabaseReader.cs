@@ -5,12 +5,34 @@ using Mono.Data.Sqlite;
 using System.Data;
 using System;
 
-public class DatabaseReader {
+public class DatabaseReader : IQuestObserver {
+
+    private QuestManager manager;
+
+    public void OnQuestInput(QuestInputData data)
+    {
+        var newDis = data.GetValue(DistanceQuestInput.INPUT_DISTANCE);
+        var newShare = data.GetValue(FacebookQuestInput.INPUT_SHARE);
+
+        totalDistance = Math.Max(newDis, totalDistance);
+        totalShare = Math.Max((int) newShare, totalShare);
+
+        manager.UpdateQuest(data);
+        if (manager.QuestIsFinish()) {
+            money += manager.GetQuest().rewardMoney;
+            exp += manager.GetQuest().rewardExp;
+            manager.SetQuest(QuestFactory.Instance().GetQuest());
+        }
+    }
 
     private static readonly DatabaseReader instance = new DatabaseReader();
 	private DatabaseReader() {
         connectionString = "URI=file:" + Application.dataPath + DATABASE_PATH;
         dbConnection = (IDbConnection) new SqliteConnection(connectionString);
+        LoadSimpleData();
+        manager = new QuestManager(ReadQuest());
+
+        QuestInputManager.Instance().Register(this);
      }
 
 	public static DatabaseReader Instance()
@@ -19,7 +41,7 @@ public class DatabaseReader {
 	}
 
     ~DatabaseReader() {
-        SaveData();
+        SaveSimpleData();
         dbConnection.Dispose();
         dbConnection = null;
     }
@@ -47,6 +69,7 @@ public class DatabaseReader {
         return achievements;
     }
 
+
     void ReadAnimation()
     {
         IDbCommand dbcmd = dbConnection.CreateCommand();
@@ -67,30 +90,56 @@ public class DatabaseReader {
         return;
     }
 
-    void ReadFood()
+    public void BuySkin() {
+        hasSkin = 1;
+    }
+
+    public void BuyFood(string name, int ammt) {
+        dbConnection.Open();
+        string sqlQuery = 
+            " UPDATE Food SET" +
+            " quantity = quantity + " + ammt.ToString() +
+            " WHERE name = '" + name + "'";
+
+        IDbCommand dbCmd = dbConnection.CreateCommand();
+        dbCmd.CommandText = sqlQuery;
+        dbCmd.ExecuteNonQuery();
+
+        dbCmd.Dispose();
+        dbCmd = null;
+
+        dbConnection.Close();
+    }
+
+    public List<Food> ReadFood()
     {
+        dbConnection.Open();
         IDbCommand dbcmd = dbConnection.CreateCommand();
         string sqlQuery = "SELECT * FROM Food";
         dbcmd.CommandText = sqlQuery;
         IDataReader reader = dbcmd.ExecuteReader();
 
+        List<Food> foodList = new List<Food>();
+
         while (reader.Read())
         {
-
+            foodList.Add(Food.Parse(reader));            
         }
 
         reader.Close();
         reader = null;
         dbcmd.Dispose();
         dbcmd = null;
+        dbConnection.Close();
 
-        return;
+        Debug.Log ("Food amount: " + foodList.ToArray().Length.ToString());
+        return foodList;
     }
 
     public IQuest ReadQuest()
     {
         // if (dbConnection.State == ConnectionState.Closed)
-            dbConnection.Open();
+        dbConnection.Open();
         
         IDbCommand dbcmd = dbConnection.CreateCommand();
         string sqlQuery = "SELECT * FROM  Mission";
@@ -109,7 +158,7 @@ public class DatabaseReader {
         dbcmd = null;
 
 //        if (dbConnection.State == ConnectionState.Open)
-            dbConnection.Close();
+        dbConnection.Close();
 
         if (currentQuest == null)
             currentQuest = QuestFactory.Instance().GetQuest();
@@ -179,21 +228,49 @@ public class DatabaseReader {
         return;
     }
 
-    private void SaveData() {
+    private void SaveSimpleData() {
+        PlayerPrefs.SetInt(KEY_HUNGER, hunger);
+        PlayerPrefs.SetInt(KEY_EXP, exp);
+        PlayerPrefs.SetInt(KEY_MONEY, money);
+        PlayerPrefs.SetFloat(KEY_DISTANCE, (float) totalDistance);
+        PlayerPrefs.SetInt(KEY_SHARE, totalShare);
+        PlayerPrefs.SetInt(KEY_SKIN, currentSkin);
+        PlayerPrefs.SetInt(KEY_HAS_SKIN, hasSkin);
+    }
 
+    private void LoadSimpleData() {
+        hunger = PlayerPrefs.GetInt(KEY_HUNGER, 0);
+        exp = PlayerPrefs.GetInt(KEY_EXP, 0);
+        money = PlayerPrefs.GetInt(KEY_MONEY, 0);
+        totalDistance = PlayerPrefs.GetFloat(KEY_DISTANCE, 0);
+        totalShare = PlayerPrefs.GetInt(KEY_SHARE, 0);
+        currentSkin = PlayerPrefs.GetInt(KEY_SKIN, 0);
+        hasSkin = PlayerPrefs.GetInt(KEY_HAS_SKIN, 0);
     }
 
     private string DATABASE_PATH = "/database.db";
     private string connectionString;
     private IDbConnection dbConnection;
 
-    private double totalDistance;
-    public double getTotalDistance() { 
-        return totalDistance;
-    }
 
-    private int totalShare;
-    public int getTotalShare() {
-        return totalShare;
-    }
+    private string KEY_HUNGER = "current_hunger";
+    public int hunger {get; set;}
+
+    private string KEY_EXP = "total_exp";
+    public int exp {get; set;}
+
+    private string KEY_MONEY = "current_money";
+    public int money {get; set;}
+
+    private string KEY_DISTANCE = "total_distance";
+    public double totalDistance {get; set;}
+
+    private string KEY_SHARE = "total_share";
+    public int totalShare {get; set;}
+
+    private string KEY_SKIN = "current_skin";
+    public int currentSkin {get; set;}
+
+    private string KEY_HAS_SKIN = "has_skin";
+    public int hasSkin { get; set;}
 } 

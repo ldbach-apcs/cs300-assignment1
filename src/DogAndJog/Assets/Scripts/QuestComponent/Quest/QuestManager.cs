@@ -5,20 +5,21 @@ using UnityEngine;
 public class QuestManager {
     private IQuest currentQuest;
 
-	public QuestManager() 
+	public QuestManager(IQuest _currentQuest) 
 	{
-		currentQuest = LoadQuest ();
+		currentQuest = _currentQuest;
+	}
 
-		if (currentQuest == null) {
-			currentQuest = QuestFactory.Instance ().GetQuest ();
-		}
+	public void SetQuest (IQuest quest) {
+		currentQuest = null;
+		currentQuest = quest;
 	}
 
 
 	public void UpdateQuest(QuestInputData data)
     {
 		currentQuest.Update (data);
-		FinishQuest();
+		// FinishQuest();
     }
 
     private void FinishQuest()
@@ -26,7 +27,6 @@ public class QuestManager {
 		if (currentQuest.IsFinish ()) 
 		{
 			// Claim Reward
-
 			// Geneerate new Quest
 			currentQuest = null;
 			currentQuest = QuestFactory.Instance().GetQuest();

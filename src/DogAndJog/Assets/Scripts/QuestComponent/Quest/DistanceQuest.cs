@@ -29,6 +29,8 @@ public class DistanceQuest : IQuest {
 	public override void Update(QuestInputData data)
 	{
 		double totalDistance = data.GetValue (DistanceQuestInput.INPUT_DISTANCE);
+		// Not correct input device
+		if (totalDistance == 0) return;
 		if (totalDistance - disStart >= disRequire)
 			isDone = true;
 

@@ -22,6 +22,8 @@ public class FacebookQuest : IQuest {
 	public override void Update(QuestInputData data)
 	{
 		shareTotal = (int) data.GetValue(FacebookQuestInput.INPUT_SHARE);
+		// Not correct input method
+		if (shareTotal == 0) return;
 		isDone = (prevValue + requireValue <= shareTotal);
 
 

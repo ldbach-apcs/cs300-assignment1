@@ -28,14 +28,14 @@ public sealed class QuestFactory {
 
 		switch (type) {
 			case 0: // Distance 
-				double totalDistance = dbReader.getTotalDistance();
+				double totalDistance = dbReader.totalDistance;
 				currentQuest = new DistanceQuest
 								(name, description, 
 								 requireValue, prevValue,
 								 rewardExp, rewardMoney);
 				break;
 			case 1: // Share
-				int totalShare = dbReader.getTotalShare();
+				int totalShare = dbReader.totalShare;
 				currentQuest = new FacebookQuest(
 								name, description,
 								(int) prevValue, (int) requireValue,
