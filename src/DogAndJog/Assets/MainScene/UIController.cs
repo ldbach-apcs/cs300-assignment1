@@ -8,7 +8,7 @@ public class UIController : MonoBehaviour {
 	public float x;
 	public float y;
 
-	void Update(){
+	void Start(){
 		UpdateAffectionUI ();
 		UpdateHungerUI();
 	}
@@ -27,13 +27,13 @@ public class UIController : MonoBehaviour {
 	}
 
 	string GetLevel(){
-		return "5";
+		return "" + (DatabaseReader.Instance().exp / 100);
 	}
 	float GetHunger(){
-		return x;
+		return DatabaseReader.Instance().hunger / 1440 ;
 	}
 	float GetAffection(){
-		return y;
+		return (DatabaseReader.Instance().exp % 100) / 1440;
 	}
 
 }

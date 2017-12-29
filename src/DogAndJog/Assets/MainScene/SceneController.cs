@@ -23,35 +23,33 @@ public class SceneController : MonoBehaviour {
 		obj.SetActive (!obj.activeInHierarchy);
 	}
 
-	private void DecreaseHungerOT(float speed){
+	private void DecreaseHungerOT(int speed){
 		long diff = System.DateTime.Now.Date.Minute - curMin;
 		UpdatecurMin ();
 		if (diff == 0) {
 			return;
 		}
 		else {
-			float decrease = diff * speed;
-			float hunger = PlayerPrefs.GetFloat ("Hunger");
-			if (hunger - decrease <= 0) {
-				PlayerPrefs.SetFloat ("Hunger", 0);
+			int hunger = DatabaseReader.Instance().hunger;
+			if (hunger - speed <= 0) {
+				DatabaseReader.Instance().hunger = 0;
 			} else {
-				PlayerPrefs.SetFloat ("Hunger", hunger - decrease);
+				DatabaseReader.Instance().hunger -= speed;
 			}
 		}
 	}
-	private void DecreaseAffectionOT(float speed){
+	private void DecreaseAffectionOT(int speed){
 		long diff = System.DateTime.Now.Date.Minute - curMin;
 		UpdatecurMin ();
 		if (diff == 0) {
 			return;
 		}
 		else {
-			float decrease = diff * speed;
-			float hunger = PlayerPrefs.GetFloat ("Affection");
-			if (hunger - decrease <= 0) {
-				PlayerPrefs.SetFloat ("Affection", 0);
+			int exp = DatabaseReader.Instance().exp;
+			if (exp - speed <= 0) {
+				DatabaseReader.Instance().exp = 0;
 			} else {
-				PlayerPrefs.SetFloat ("Affection", hunger - decrease);
+				DatabaseReader.Instance().exp -= speed;
 			}
 		}
 	}
