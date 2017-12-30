@@ -12,6 +12,7 @@ public class BuyController : MonoBehaviour {
     public GameObject ItemView, QuantityView, ShowAfterBuy,buttonText;//, button;
     Text text;
     bool owned;
+
     public void Start()
     {
         text = QuantityView.transform.GetChild(0).GetComponent<Text>();
@@ -52,7 +53,8 @@ public class BuyController : MonoBehaviour {
         }
 
         ItemView.transform.GetChild(0).GetComponent<Text>().text = item.GetName();
-        ItemView.transform.GetChild(2).GetComponent<Text>().text = item.GetPrice().ToString();
+        ItemView.transform.GetChild(1).GetComponent<Image>().sprite = item.img;
+        ItemView.transform.GetChild(2).GetComponent<Text>().text = "$" + item.GetPrice();//item.GetPrice().ToString();
         ItemView.transform.GetChild(3).GetComponent<Text>().text = item.GetDescription();
         price = item.GetPrice();
         cost = price;
@@ -72,8 +74,14 @@ public class BuyController : MonoBehaviour {
     {
         int afterBuy = Currency.GetValue() - cost;
         Color color = Color.green;
-        //Afterbuy part
-        if (afterBuy < 0) color = Color.red;
+        //Afterbuy par
+
+        transform.GetChild(1).GetChild(5).GetComponent<Button>().interactable = true;
+            
+        if (afterBuy < 0) {
+            color = Color.red;
+            transform.GetChild(1).GetChild(5).GetComponent<Button>().interactable = false;
+        }
         ShowAfterBuy.GetComponent<Text>().text = afterBuy.ToString();
         ShowAfterBuy.GetComponent<Text>().color = color;
         ShowAfterBuy.transform.GetChild(0).GetComponent<Image>().color = color;
@@ -85,10 +93,10 @@ public class BuyController : MonoBehaviour {
             //Set PlayerReference
         }
         Currency.Decrease(cost);
-        /*if (item.GetItemType()=="Food")
+        if (item.GetItemType()=="Food")
             DatabaseReader.Instance().BuyFood(item.GetName(), quantity);
         if (item.GetItemType() == "Skin")
-            DatabaseReader.Instance().BuySkin();*/
+            DatabaseReader.Instance().BuySkin();
         SetNonActive();
     }
 }

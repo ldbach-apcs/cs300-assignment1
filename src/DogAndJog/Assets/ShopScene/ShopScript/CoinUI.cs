@@ -19,18 +19,18 @@ public class CoinUI : MonoBehaviour {
 
 public class Currency
 {
-    int gained;
+    int gained = -1;
     static Currency currency;
     Currency()
     {
-        gained = PlayerPrefs.GetInt("PetCurrency", 2000);
-        if (gained == 0) Update();
+        // gained = PlayerPrefs.GetInt("PetCurrency", 2000);
+        if (gained == -1) gained = DatabaseReader.Instance().money;
     }
 
     public static void Update()
     {
-        PlayerPrefs.SetInt("PetCurrency", GetValue());
-        PlayerPrefs.Save();
+        // PlayerPrefs.SetInt("PetCurrency", GetValue());
+        // PlayerPrefs.Save();
     }
     public static int GetValue()
     {
@@ -52,7 +52,9 @@ public class Currency
     {
         if (dec < 0) return false; //Error
         if (!CheckEnough(dec)) return false;
+
         currency.gained -= dec;
+        DatabaseReader.Instance().money = currency.gained;
         Update();
         return true;
     }

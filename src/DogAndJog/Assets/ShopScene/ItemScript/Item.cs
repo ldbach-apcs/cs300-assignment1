@@ -9,6 +9,14 @@ public abstract class Item
     string description;
     int cost; //Cost for Animation is 0
     bool quantiable;
+    public Sprite img;
+
+    public void SetImg(Sprite _img) {
+        img = _img;
+    }
+
+
+
     protected Item(string name, string description, int cost, bool quantiable)
     {
         this.name = name;
