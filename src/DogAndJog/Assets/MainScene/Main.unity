@@ -2409,6 +2409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicPlayer: {fileID: 1303510416761856, guid: e00da083a9ca776409b6e6a1548baded,
     type: 2}
+  canvas: {fileID: 82482498}
 --- !u!4 &1436782107
 Transform:
   m_ObjectHideFlags: 0
@@ -2952,7 +2953,7 @@ Prefab:
     - target: {fileID: 114662753181634722, guid: 93ab9035b6a20d04aa9645575330f4b4,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114662753181634722, guid: 93ab9035b6a20d04aa9645575330f4b4,
         type: 2}
@@ -2963,16 +2964,21 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1436782106}
     - target: {fileID: 114662753181634722, guid: 93ab9035b6a20d04aa9645575330f4b4,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Eating
+      value: Eat
       objectReference: {fileID: 0}
     - target: {fileID: 114662753181634722, guid: 93ab9035b6a20d04aa9645575330f4b4,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114662753181634722, guid: 93ab9035b6a20d04aa9645575330f4b4,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93ab9035b6a20d04aa9645575330f4b4, type: 2}
