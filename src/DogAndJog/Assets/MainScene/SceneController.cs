@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class SceneController : MonoBehaviour {
 
+	public GameObject musicPlayer;
 	int curMin;
 
 	void Start(){
 		curMin = PlayerPrefs.GetInt ("curMin");
+
+		GameObject musicObject = GameObject.FindWithTag("Music");
+		if (musicObject == null) {
+			Instantiate(musicPlayer, Vector3.zero, Quaternion.identity);
+		}
 	}
 
 	void Update(){
