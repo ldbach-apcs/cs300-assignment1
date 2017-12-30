@@ -26,6 +26,9 @@ public class Scroll_Dynamic_Content : MonoBehaviour {
 
     GameObject NewUnit(int n)
     {
+        storeCosts[1] = DatabaseReader.Instance().hasSkin == 1 ? 0 : 150;
+        owned[1] = (DatabaseReader.Instance().hasSkin == 1);
+
         Vector3 newPos = Vector3.down * itemHeight * n;
         GameObject go = Instantiate(skin[n], transform);
         // GameObject go = Instantiate(prefab, transform);
@@ -35,12 +38,26 @@ public class Scroll_Dynamic_Content : MonoBehaviour {
         // string name = reader.GetString(0);
         // string description = reader.GetString(1);
         // int storeCost = reader.GetInt32(2);
-        // Item item = new MySkin(names[n], descriptions[n], storeCosts[n], owned[n]);
+        Item item = new MySkin(names[n], descriptions[n], storeCosts[n], owned[n]);
         // if (type.Equals("Food")) item = new MyFood(name, description, storeCost, 0, 0);
         // if (type.Equals("Skin")) item = new MySkin(name, description, storeCost, false);
-        //go.GetComponent<StoreItemController>().SetItem(item);
+        go.GetComponent<StoreItemController>().SetItem(item);
+
+
+        go.transform.GetChild(2).GetComponent<Text>().text = names[n];
+        // go.transform.GetChild(1).transform.GetComponent<Image>().sprite = food_milk;
+        go.transform.GetChild(0).GetComponent<Text>().text = "$" + storeCosts[n];//cost.ToString();
+        go.transform.GetChild(3).GetComponent<Text>().text = descriptions[n];    
+    
+
         return go;
     }
+
+
+    private string[] names = {"Good Boye", "Black boye"};
+    private string[] descriptions = {"Normal good boye", "Good boye, but black"};
+    private int[] storeCosts = {0, -1};
+    private bool[] owned = {true, false};
 
     void OpenConnect()
     {

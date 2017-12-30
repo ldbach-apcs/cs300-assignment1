@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BuyController : MonoBehaviour {
     //Loading and static call
@@ -88,15 +89,22 @@ public class BuyController : MonoBehaviour {
     }
 	public void Buy()
     {
-        if (owned)
-        {
-            //Set PlayerReference
-        }
         Currency.Decrease(cost);
         if (item.GetItemType()=="Food")
             DatabaseReader.Instance().BuyFood(item.GetName(), quantity);
-        if (item.GetItemType() == "Skin")
-            DatabaseReader.Instance().BuySkin();
+        if (item.GetItemType() == "Skin") {
+            if (!owned) {
+                DatabaseReader.Instance().BuySkin();
+
+            }
+            if (item.GetName() == "Good Boye") {
+                DatabaseReader.Instance().currentSkin = 0;
+            } else {
+                DatabaseReader.Instance().currentSkin = 1;
+            }
+
+            SceneManager.LoadScene("Main");
+        }
         SetNonActive();
     }
 }
