@@ -59,22 +59,29 @@ public sealed class QuestFactory {
 		// to create scaling  quest
 
 		// For now, return a new distance quest
+		IQuest newQuest = null;
+
+		// Get current share number and distancce
+		int currentShare = DatabaseReader.Instance().totalShare;
+		float currentDistance = (float) DatabaseReader.Instance().totalDistance;
 	
-		/*
-		if (Random.Range(0, 1) == 0) 
-			return new DistanceQuest("Let's run away", "Your pet have seen a luxurious house in town"
-			+ " and he is very excited that he ran there. Go after him, because he is in need of a snack!", 500.0f);
-		else 
+		int randomQuest = Random.Range(0, 4);
+		if (randomQuest == 1) 
+			newQuest = new DistanceQuest(
+			"Running never boring", "Dog is a breed full of energy, they can run on and on for many hours", 
+			100.0f, currentDistance, 10, 100);
+		else if (randomQuest == 2)
 			return new DistanceQuest("Greeting season", "A dog park is opened nearby, your pet got so excited"
-			+ ", please walk him there", 200.0f);
-		*/
+			+ ", please walk him there", 200.0f, currentDistance, 50, 50);
+		else if (randomQuest == 3) {
+			newQuest =  new FacebookQuest("New to the neighborhood", 
+			"It's always a good courtersy to say hello to your neighbor", currentShare, 1, 10, 15);
+		} else {
+			newQuest =  new FacebookQuest("Let's make some friend", "Your pet is lonely", currentShare, 2, 20, 30);
+		}
 
-
-		// Get current share number
-		int currentShare = PlayerPrefs.GetInt(FacebookQuestInput.PREV_SHARE);
-		IQuest newQuest =  new FacebookQuest("Let's make some friend", "Your pet is lonely", currentShare, 3, 1, 1);
-
-		dbReader.SaveQuest(newQuest);
+		if (newQuest != null)
+			dbReader.SaveQuest(newQuest);
 		return newQuest;
 	}
 }

@@ -5,34 +5,14 @@ using Mono.Data.Sqlite;
 using System.Data;
 using System;
 
-public class DatabaseReader : IQuestObserver {
-
-    private QuestManager manager;
-
-    public void OnQuestInput(QuestInputData data)
-    {
-        var newDis = data.GetValue(DistanceQuestInput.INPUT_DISTANCE);
-        var newShare = data.GetValue(FacebookQuestInput.INPUT_SHARE);
-
-        totalDistance = Math.Max(newDis, totalDistance);
-        totalShare = Math.Max((int) newShare, totalShare);
-
-        manager.UpdateQuest(data);
-        if (manager.QuestIsFinish()) {
-            money += manager.GetQuest().rewardMoney;
-            exp += manager.GetQuest().rewardExp;
-            manager.SetQuest(QuestFactory.Instance().GetQuest());
-        }
-    }
+public class DatabaseReader {
 
     private static readonly DatabaseReader instance = new DatabaseReader();
 	private DatabaseReader() {
+        // Debug.Log("DB init now");
         connectionString = "URI=file:" + Application.dataPath + DATABASE_PATH;
         dbConnection = (IDbConnection) new SqliteConnection(connectionString);
         LoadSimpleData();
-        manager = new QuestManager(ReadQuest());
-
-        QuestInputManager.Instance().Register(this);
      }
 
 	public static DatabaseReader Instance()
@@ -41,7 +21,7 @@ public class DatabaseReader : IQuestObserver {
 	}
 
     ~DatabaseReader() {
-        SaveSimpleData();
+       //  SaveSimpleData();
         dbConnection.Dispose();
         dbConnection = null;
     }
@@ -92,9 +72,11 @@ public class DatabaseReader : IQuestObserver {
 
     public void BuySkin() {
         hasSkin = 1;
+        SaveSimpleData();
     }
 
     public void BuyFood(string name, int ammt) {
+        SaveSimpleData();
         dbConnection.Open();
         string sqlQuery = 
             " UPDATE Food SET" +
@@ -181,7 +163,7 @@ public class DatabaseReader : IQuestObserver {
         double requireValue = quest.requireValue;
 
         // if (dbConnection.State == ConnectionState.Closed)
-            dbConnection.Open();
+        dbConnection.Open();
 
         string sqlQuery = 
             " UPDATE Mission SET" +
@@ -205,7 +187,7 @@ public class DatabaseReader : IQuestObserver {
         Debug.Log(type.ToString());
         
 //        if (dbConnection.State == ConnectionState.Open)
-            dbConnection.Close();
+        dbConnection.Close();
     }
 
     void ReadSkin()
@@ -228,7 +210,7 @@ public class DatabaseReader : IQuestObserver {
         return;
     }
 
-    private void SaveSimpleData() {
+    public void SaveSimpleData() {
         PlayerPrefs.SetInt(KEY_HUNGER, hunger);
         PlayerPrefs.SetInt(KEY_EXP, exp);
         PlayerPrefs.SetInt(KEY_MONEY, money);
@@ -236,6 +218,10 @@ public class DatabaseReader : IQuestObserver {
         PlayerPrefs.SetInt(KEY_SHARE, totalShare);
         PlayerPrefs.SetInt(KEY_SKIN, currentSkin);
         PlayerPrefs.SetInt(KEY_HAS_SKIN, hasSkin);
+        PlayerPrefs.SetInt("first_start", firstStart);
+
+        Debug.Log(firstStart);
+        PlayerPrefs.Save();
     }
 
     private void LoadSimpleData() {
@@ -246,9 +232,18 @@ public class DatabaseReader : IQuestObserver {
         totalShare = PlayerPrefs.GetInt(KEY_SHARE, 0);
         currentSkin = PlayerPrefs.GetInt(KEY_SKIN, 0);
         hasSkin = PlayerPrefs.GetInt(KEY_HAS_SKIN, 0);
+
+        // Debug.Log(firstStart);
+       if (PlayerPrefs.GetInt("first_start", 0) == 0) {
+            firstStart = 1;
+            money = 200;
+        }
     }
 
-    private string DATABASE_PATH = "/database.db";
+    private int firstStart;
+
+    private string DATABASE_PATH = "/db_w_sprite.db";
+    //private string DATABASE_PATH = "/database.db";
     private string connectionString;
     private IDbConnection dbConnection;
 

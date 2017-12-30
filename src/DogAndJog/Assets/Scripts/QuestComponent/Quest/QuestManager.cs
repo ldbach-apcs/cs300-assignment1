@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestManager {
-    private IQuest currentQuest;
+    private static IQuest currentQuest = null;
 
 	public QuestManager(IQuest _currentQuest) 
 	{
-		currentQuest = _currentQuest;
+		if (currentQuest == null)
+			currentQuest = _currentQuest;
 	}
 
 	public void SetQuest (IQuest quest) {
