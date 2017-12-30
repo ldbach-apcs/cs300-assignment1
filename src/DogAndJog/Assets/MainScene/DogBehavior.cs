@@ -11,12 +11,15 @@ public class DogBehavior : MonoBehaviour {
 	string state = "sitting";
 	int frames = 60;
 	List<string> emotions;
+	public GameObject FoodMenu;
 
 	// Use this for initialization
 	void Start () {
 		//GameObject.Find("DogMesh").GetComponent<Renderer>().materials[0].SetTexture("Base(RGB)",
+
 		emotions = new List<string>();
 		DisplayEmotion ();
+		FoodMenu.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -45,9 +48,11 @@ public class DogBehavior : MonoBehaviour {
 				return false;
 			}
 		case "wiggling":
+			FoodMenu.SetActive (true);
 			GetComponent<Animation> ().Play ("Wiggling");
 			return true;
 		case "return":
+			FoodMenu.SetActive (false);
 			if (this.transform.position.z <= 0) {
 				this.transform.position = from;
 				this.transform.forward = -this.transform.forward ;
