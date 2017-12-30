@@ -31,7 +31,14 @@ public class SceneController : MonoBehaviour {
 	}
 	public void Eat(int index){
 		if (DatabaseReader.Instance ().hunger < 1440) {
-			//DatabaseReader.Instance ().ReadFood () [index].quanity = DatabaseReader.Instance ().ReadFood () [index].quanity - 1;
+			/*if (DatabaseReader.Instance ().ReadFood () [index].quantity > 0) {
+				DatabaseReader.Instance ().ReadFood () [index].quanity = DatabaseReader.Instance ().ReadFood () [index].quanity - 1;
+			
+				DatabaseReader.Instance ().hunger = DatabaseReader.Instance ().hunger + 40;
+				canvas.GetComponent<UIController> ().UpdateAffectionUI ();
+				canvas.GetComponent<UIController> ().UpdateHungerUI ();
+				canvas.GetComponent<UIController> ().UpdateLevelUI ();
+			}*/
 			DatabaseReader.Instance ().hunger = DatabaseReader.Instance ().hunger + 40;
 			canvas.GetComponent<UIController> ().UpdateAffectionUI ();
 			canvas.GetComponent<UIController> ().UpdateHungerUI ();
