@@ -252,9 +252,9 @@ public class DatabaseReader {
         hasSkin = PlayerPrefs.GetInt(KEY_HAS_SKIN, 0);
 
         // Debug.Log(firstStart);
-       if (PlayerPrefs.GetInt("xxfirst_start", 0) == 0) {
+       if (PlayerPrefs.GetInt("first_start", 0) == 0) {
             firstStart = 1;
-            money = 2000;
+            money = 200;
         }
     }
 

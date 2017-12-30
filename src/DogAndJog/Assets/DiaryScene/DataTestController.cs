@@ -4,16 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DataTestController : MonoBehaviour {
-	void Start() {
-		TestDatabase();
-	}
-
+	public Text questTitle, questDescription, questProgress, distanceTotalDisplay;
+	
 	void Update() {
-
-	}
-
-	private void TestDatabase() {
-		// IQuest currentQuest = DatabaseReader.Instance().ReadQuest();
-		QuestFactory.Instance().GetQuest();
+		IQuest curQuest = new QuestManager(null).GetQuest();
+		questTitle.text = curQuest.name;
+		questDescription.text = curQuest.description;
+		questProgress.text = curQuest.GetProgress();
+		distanceTotalDisplay.text = DatabaseReader.Instance().totalDistance.ToString();
 	}
 }
