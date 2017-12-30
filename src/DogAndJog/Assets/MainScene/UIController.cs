@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour {
 	void Start(){
 		UpdateAffectionUI ();
 		UpdateHungerUI();
+		UpdateLevelUI ();
 	}
 
 	void UpdateHungerUI(){
@@ -24,6 +25,9 @@ public class UIController : MonoBehaviour {
 		RectTransform holder = GameObject.Find ("AffectionBar").gameObject.GetComponent<RectTransform>();
 		bar.sizeDelta = new Vector2 (holder.sizeDelta.x * GetAffection(), bar.sizeDelta.y);
 		bar.localPosition = - new Vector2 (holder.sizeDelta.x * (1- GetAffection()) / 2, bar.localPosition.y);
+	}
+	void UpdateLevelUI(){
+		GameObject.Find ("Level").gameObject.GetComponent<Text> ().text = GetLevel ();
 	}
 
 	string GetLevel(){

@@ -57,6 +57,7 @@
      <Compile Include="Assets\MainScene\Dog\AnimationControl.cs" />
      <Compile Include="Assets\MainScene\DogBehavior.cs" />
      <Compile Include="Assets\MainScene\SceneController.cs" />
+     <Compile Include="Assets\MainScene\SkinSelect.cs" />
      <Compile Include="Assets\MainScene\UIController.cs" />
      <Compile Include="Assets\Pedometer\Example\StepCounter.cs" />
      <Compile Include="Assets\Pedometer\Plugins\Managed\IPedometer.cs" />
@@ -66,6 +67,10 @@
      <Compile Include="Assets\Pedometer\Plugins\Managed\Platforms\PedometeriOS.cs" />
      <Compile Include="Assets\Pedometer\Plugins\Managed\Utilities\PedometerHelper.cs" />
      <Compile Include="Assets\Scripts\DatabaseReader\DatabaseReader.cs" />
+     <Compile Include="Assets\Scripts\GoBack.cs" />
+     <Compile Include="Assets\Scripts\Interaction\Food.cs" />
+     <Compile Include="Assets\Scripts\Interaction\Skin.cs" />
+     <Compile Include="Assets\Scripts\MasterController.cs" />
      <Compile Include="Assets\Scripts\QuestComponent\Quest\Achievement.cs" />
      <Compile Include="Assets\Scripts\QuestComponent\Quest\AchievementManager.cs" />
      <Compile Include="Assets\Scripts\QuestComponent\Quest\DistanceQuest.cs" />
@@ -82,10 +87,8 @@
      <Compile Include="Assets\Scripts\QuestComponent\QuestInput\PlayerPrefs2.cs" />
      <Compile Include="Assets\Scripts\QuestComponent\QuestInput\QuestInputData.cs" />
      <Compile Include="Assets\Scripts\QuestComponent\QuestInput\QuestInputManager.cs" />
+     <Compile Include="Assets\Scripts\SceneLoader.cs" />
      <Compile Include="Assets\ShopScene\ItemScript\Item.cs" />
-     <Compile Include="Assets\ShopScene\ItemScript\MyAnimation.cs" />
-     <Compile Include="Assets\ShopScene\ItemScript\MyFood.cs" />
-     <Compile Include="Assets\ShopScene\ItemScript\MySkin.cs" />
      <Compile Include="Assets\ShopScene\ShopScript\BuyController.cs" />
      <Compile Include="Assets\ShopScene\ShopScript\CoinUI.cs" />
      <Compile Include="Assets\ShopScene\ShopScript\Scroll_Dynamic_Content.cs" />

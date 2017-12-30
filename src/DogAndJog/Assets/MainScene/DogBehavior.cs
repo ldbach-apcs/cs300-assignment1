@@ -89,13 +89,13 @@ public class DogBehavior : MonoBehaviour {
 		}
 	}
 	bool isHungry(){
-		return true;
+		return (DatabaseReader.Instance().hunger < 720);
 	}
 	bool isHappy(){
-		return true;
+		return (DatabaseReader.Instance().exp > 1440);
 	}
 	bool isAngry(){
-		return true;
+		return !isHappy();
 	}
 	void EmotionCheck(){
 		emotions.Clear ();
