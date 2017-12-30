@@ -876,6 +876,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 127681903}
+--- !u!1 &193449090 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1728824689634850, guid: 93ab9035b6a20d04aa9645575330f4b4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1172852392}
 --- !u!1 &290215131
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +949,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 290215131}
+--- !u!1 &309173884 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1728824689634850, guid: 93ab9035b6a20d04aa9645575330f4b4,
+    type: 2}
+  m_PrefabInternal: {fileID: 648222251}
 --- !u!1 &349831474 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100008, guid: 8df05787b4bbaf84aabd986bf4e78fab, type: 3}
@@ -1249,7 +1259,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1728824689634850, guid: 93ab9035b6a20d04aa9645575330f4b4, type: 2}
       propertyPath: m_Name
-      value: MeatText
+      value: 3Text
       objectReference: {fileID: 0}
     - target: {fileID: 114695861407941516, guid: 93ab9035b6a20d04aa9645575330f4b4,
         type: 2}
@@ -1749,6 +1759,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 963595035}
+--- !u!1 &1021264222 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1728824689634850, guid: 93ab9035b6a20d04aa9645575330f4b4,
+    type: 2}
+  m_PrefabInternal: {fileID: 2039178312}
 --- !u!1 &1061413614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,7 +2350,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1728824689634850, guid: 93ab9035b6a20d04aa9645575330f4b4, type: 2}
       propertyPath: m_Name
-      value: SausageText
+      value: 2Text
       objectReference: {fileID: 0}
     - target: {fileID: 114695861407941516, guid: 93ab9035b6a20d04aa9645575330f4b4,
         type: 2}
@@ -2480,6 +2495,10 @@ MonoBehaviour:
   musicPlayer: {fileID: 1303510416761856, guid: e00da083a9ca776409b6e6a1548baded,
     type: 2}
   canvas: {fileID: 82482498}
+  btnText:
+  - {fileID: 1021264222}
+  - {fileID: 193449090}
+  - {fileID: 309173884}
 --- !u!4 &1436782107
 Transform:
   m_ObjectHideFlags: 0
@@ -3049,6 +3068,10 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1728824689634850, guid: 93ab9035b6a20d04aa9645575330f4b4, type: 2}
+      propertyPath: m_Name
+      value: 1Text
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93ab9035b6a20d04aa9645575330f4b4, type: 2}

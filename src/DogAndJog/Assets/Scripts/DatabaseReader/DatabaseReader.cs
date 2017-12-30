@@ -93,6 +93,24 @@ public class DatabaseReader {
         dbConnection.Close();
     }
 
+	public void EatFood(string name) {
+		SaveSimpleData();
+		dbConnection.Open();
+		string sqlQuery = 
+			" UPDATE Food SET" +
+			" quantity = quantity - 1 " +
+			" WHERE name = '" + name + "'";
+
+		IDbCommand dbCmd = dbConnection.CreateCommand();
+		dbCmd.CommandText = sqlQuery;
+		dbCmd.ExecuteNonQuery();
+
+		dbCmd.Dispose();
+		dbCmd = null;
+
+		dbConnection.Close();
+	}
+
     public List<Food> ReadFood()
     {
         dbConnection.Open();

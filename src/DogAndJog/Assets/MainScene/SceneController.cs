@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class SceneController : MonoBehaviour {
@@ -7,10 +8,13 @@ public class SceneController : MonoBehaviour {
 	public GameObject musicPlayer;
 	public GameObject canvas;
 	int curMin;
+	public GameObject[] btnText;
 
 	void Start(){
 		curMin = PlayerPrefs.GetInt ("curMin");
-
+		for (int i = 0; i < btnText.Length; i++) {
+			btnText [i].GetComponent<Text> ().text = "x" + DatabaseReader.Instance ().ReadFood () [i].quantity;
+		}
 		GameObject musicObject = GameObject.FindWithTag("Music");
 		if (musicObject == null) {
 			Instantiate(musicPlayer, Vector3.zero, Quaternion.identity);
@@ -31,22 +35,18 @@ public class SceneController : MonoBehaviour {
 	}
 	public void Eat(int index){
 		if (DatabaseReader.Instance ().hunger < 1440) {
-			/*if (DatabaseReader.Instance ().ReadFood () [index].quantity > 0) {
-				DatabaseReader.Instance ().ReadFood () [index].quanity = DatabaseReader.Instance ().ReadFood () [index].quanity - 1;
-			
+			if (DatabaseReader.Instance ().ReadFood () [index].quantity > 0) {
+				DatabaseReader.Instance().EatFood(DatabaseReader.Instance ().ReadFood () [index].Name ());
 				DatabaseReader.Instance ().hunger = DatabaseReader.Instance ().hunger + 40;
 				canvas.GetComponent<UIController> ().UpdateAffectionUI ();
 				canvas.GetComponent<UIController> ().UpdateHungerUI ();
 				canvas.GetComponent<UIController> ().UpdateLevelUI ();
-			}*/
-			DatabaseReader.Instance ().hunger = DatabaseReader.Instance ().hunger + 40;
-			canvas.GetComponent<UIController> ().UpdateAffectionUI ();
-			canvas.GetComponent<UIController> ().UpdateHungerUI ();
-			canvas.GetComponent<UIController> ().UpdateLevelUI ();
+			}
 		}
 		if (DatabaseReader.Instance ().hunger >= 1440) {
 			DatabaseReader.Instance ().hunger = 1440;
 		}
+		btnText[index].GetComponent<Text> ().text = "x" + DatabaseReader.Instance ().ReadFood () [index].quantity;
 	}
 
 	private void DecreaseHungerOT(int speed){
